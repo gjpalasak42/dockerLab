@@ -1,0 +1,21 @@
+# Secrets
+.env
+
+# Docker data volumes
+n8n_data/
+uptime_kuma_data/
+portainer_data/
+postgred_data/
+
+# OS / editor cruft
+.DS_Store
+.vscode/
+*.log
+
+# Node/npm caches (if present)
+node_modules/
+npm-debug.log*
+
+# Python caches (if any utils/scripts get added)
+__pycache__/
+*.pyc

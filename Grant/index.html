@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grant Palasak | Home</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #0D1117; }
+        h1, h2, h3, .font-mono { font-family: 'Fira Code', monospace; }
+        .typing-cursor { background-color: #22d3ee; width: 10px; animation: blink 1s step-end infinite; }
+        @keyframes blink { from, to { background-color: transparent; } 50% { background-color: #22d3ee; } }
+        .glow { text-shadow: 0 0 8px rgba(34, 211, 238, 0.4), 0 0 20px rgba(34, 211, 238, 0.2); }
+        .nav-link { transition: color 0.3s, border-color 0.3s; }
+        .nav-link:hover { color: #22d3ee; }
+        .nav-link.active { color: #22d3ee; border-bottom-color: #22d3ee; }
+    </style>
+</head>
+<body class="text-gray-300">
+    <div class="flex flex-col min-h-screen">
+        <header class="max-w-4xl mx-auto w-full p-6 md:p-8">
+            <nav class="flex justify-between items-center">
+                <a href="./index.html" class="text-xl font-bold text-white font-mono">Grant Palasak</a>
+                <ul class="flex space-x-6 md:space-x-8 text-gray-400 font-mono text-sm">
+                    <li><a href="./index.html" class="nav-link active border-b-2 pb-1">/home</a></li>
+                    <li><a href="./about.html" class="nav-link border-b-2 border-transparent pb-1">/about</a></li>
+                    <li><a href="./projects.html" class="nav-link border-b-2 border-transparent pb-1">/projects</a></li>
+                    <li><a href="./contact.html" class="nav-link border-b-2 border-transparent pb-1">/contact</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <main class="flex-grow max-w-4xl mx-auto p-6 md:p-12 flex items-center">
+            <div class="text-center md:text-left">
+                <h1 class="text-4xl md:text-6xl font-bold text-white mb-2 glow">
+                    <span id="typing-text"></span><span class="typing-cursor"></span>
+                </h1>
+                <p class="text-lg text-cyan-400 font-mono mb-8">Cybersecurity Student & Technology Enthusiast</p>
+                <p class="text-base md:text-lg leading-relaxed max-w-2xl mb-10">
+                    Welcome to my digital space. I'm a computer science student with a deep focus on offensive security. This site serves as a portfolio for my projects, a summary of my skills, and a point of contact.
+                </p>
+                <a href="./projects.html" class="inline-block bg-cyan-500 text-gray-900 font-bold py-3 px-8 rounded-lg hover:bg-cyan-400 transition-colors duration-300 font-mono">
+                    View Projects & Competitions
+                </a>
+            </div>
+        </main>
+
+        <footer class="text-center p-6 mt-12 border-t border-gray-800">
+            <div class="max-w-4xl mx-auto flex justify-between items-center text-sm text-gray-500 font-mono">
+                <span>v1.1</span>
+                <span class="text-red-400">[!] This site is not in scope.</span>
+            </div>
+        </footer>
+    </div>
+    <script>
+        const typingTextElement = document.getElementById('typing-text');
+        const textToType = "Grant Palasak.";
+        let i = 0;
+        function typeWriter() {
+            if (i < textToType.length) {
+                typingTextElement.innerHTML += textToType.charAt(i);
+                i++;
+                setTimeout(typeWriter, 150);
+            }
+        }
+        document.addEventListener('DOMContentLoaded', typeWriter);
+    </script>
+</body>
+</html>
+

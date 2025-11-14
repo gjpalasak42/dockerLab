@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grant Palasak | About</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #0D1117; }
+        h1, h2, h3, .font-mono { font-family: 'Fira Code', monospace; }
+        .nav-link { transition: color 0.3s, border-color 0.3s; }
+        .nav-link:hover { color: #22d3ee; }
+        .nav-link.active { color: #22d3ee; border-bottom-color: #22d3ee; }
+    </style>
+</head>
+<body class="text-gray-300">
+    <div class="flex flex-col min-h-screen">
+        <header class="max-w-4xl mx-auto w-full p-6 md:p-8">
+            <nav class="flex justify-between items-center">
+                <a href="./index.html" class="text-xl font-bold text-white font-mono">Grant Palasak</a>
+                <ul class="flex space-x-6 md:space-x-8 text-gray-400 font-mono text-sm">
+                    <li><a href="./index.html" class="nav-link border-b-2 border-transparent pb-1">/home</a></li>
+                    <li><a href="./about.html" class="nav-link active border-b-2 pb-1">/about</a></li>
+                    <li><a href="./projects.html" class="nav-link border-b-2 border-transparent pb-1">/projects</a></li>
+                    <li><a href="./contact.html" class="nav-link border-b-2 border-transparent pb-1">/contact</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <main class="flex-grow max-w-4xl mx-auto p-6 md:p-12 w-full">
+            <section class="mb-12">
+                <h1 class="text-3xl font-bold text-white mb-4">About Me</h1>
+                <p class="text-base leading-relaxed">
+                    I am a highly motivated and results-driven cybersecurity professional, currently pursuing a B.S. in Computer Science at Tennessee Technological University with a concentration in Information Assurance and Cybersecurity. My passion lies in offensive security methodologies, penetration testing, and security assessments. I am eager to contribute innovative solutions to enhance organizational security in a dynamic, collaborative environment.
+                </p>
+                <p class="text-base leading-relaxed mt-4 bg-gray-800/50 border border-cyan-500/20 rounded-lg p-4">
+                    <strong class="text-cyan-400">Status:</strong> I am not currently seeking new employment opportunities, but I am always open to connecting with fellow professionals in the tech and security space.
+                </p>
+            </section>
+            
+            <section class="mb-12">
+                <h2 class="text-2xl font-bold text-white border-b-2 border-cyan-500/30 pb-2 mb-6">Technical Skills</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="bg-gray-800/50 border border-gray-700 rounded-lg p-4">
+                        <h3 class="font-bold text-cyan-400 mb-2">Offensive Security</h3>
+                        <ul class="list-disc list-inside text-sm space-y-1">
+                            <li>Web & Network Assessments</li>
+                            <li>Basic Mobile App Testing (Android)</li>
+                            <li>GenAI System Evaluations</li>
+                            <li>Custom Tool Development</li>
+                        </ul>
+                    </div>
+                    <div class="bg-gray-800/50 border border-gray-700 rounded-lg p-4">
+                        <h3 class="font-bold text-cyan-400 mb-2">Languages & Tech</h3>
+                        <ul class="list-disc list-inside text-sm space-y-1">
+                            <li>Python, Java, C++, Bash</li>
+                            <li>Burp Suite API</li>
+                            <li>React Native</li>
+                            <li>Power Automate</li>
+                        </ul>
+                    </div>
+                    <div class="bg-gray-800/50 border border-gray-700 rounded-lg p-4">
+                        <h3 class="font-bold text-cyan-400 mb-2">Dev & Ops</h3>
+                        <ul class="list-disc list-inside text-sm space-y-1">
+                            <li>Software Development</li>
+                            <li>DevSecOps Principles</li>
+                            <li>Agile/Scrum Frameworks</li>
+                            <li>Docker & Containerization</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="text-center p-6 mt-12 border-t border-gray-800">
+            <div class="max-w-4xl mx-auto flex justify-between items-center text-sm text-gray-500 font-mono">
+                <span>v1.1</span>
+                <span class="text-red-400">[!] This site is not in scope.</span>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>
+
