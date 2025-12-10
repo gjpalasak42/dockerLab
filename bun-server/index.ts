@@ -1,7 +1,7 @@
 import serveStatic from "serve-static-bun";
 
 const server = Bun.serve({
-  port: 80, // Default to port 80 as requested
+  port: 8080, // Use non-privileged port for running as non-root user
   fetch(req) {
     const url = new URL(req.url);
 
