@@ -8,7 +8,7 @@ services:
     container_name: grantSite-dev
     restart: unless-stopped
     volumes:
-      - ./Grant:/usr/app/public:ro # Live updates
+      - ./grant:/usr/app/public:ro # Live updates
     ports:
       - "${GRANT_SITE_PORT}:8080" # Maps to host port defined in .env
     environment:
