@@ -8,7 +8,7 @@ services:
     container_name: grantSite
     restart: unless-stopped
     volumes:
-      - ./Grant:/usr/app/public:ro # Mounts your site files into the container
+      - ./grant:/usr/app/public:ro # Mounts your site files into the container
     ports:
       - "${GRANT_SITE_PORT}:8080" # Exposes this site on port 8081 (or configured) of your Mac Mini
 
