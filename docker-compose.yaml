@@ -1,15 +1,16 @@
-version: '3.8'
-
 services:
   # --- Grant's Main Page ---
   grantSite:
-    image: nginx:alpine # Use a lightweight Nginx web server
+    build:
+      context: .
+      dockerfile: ./bun-server/Dockerfile
+    image: grantsite-prod # Explicit lowercase image name required
     container_name: grantSite
     restart: unless-stopped
     volumes:
-      - ./grant:/usr/share/nginx/html:ro # Mounts your site files into the container
+      - ./Grant:/usr/app/public:ro # Mounts your site files into the container
     ports:
-      - "${GRANT_SITE_PORT}:80" # Exposes this site on port 8081 of your Mac Mini
+      - "${GRANT_SITE_PORT}:80" # Exposes this site on port 8081 (or configured) of your Mac Mini
 
 # --- Portainer --
   portainer:

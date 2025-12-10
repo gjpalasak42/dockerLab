@@ -1,0 +1,13 @@
+{
+  "name": "bun-static-server",
+  "version": "1.0.0",
+  "description": "Minimal secure static file server with Bun",
+  "main": "index.ts",
+  "scripts": {
+    "start": "bun run index.ts",
+    "test": "bun test"
+  },
+  "dependencies": {
+    "serve-static-bun": "^0.5.3"
+  }
+}
