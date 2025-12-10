@@ -1,0 +1,19 @@
+services:
+  # --- Grant's Main Page (Dev Mode) ---
+  grantSite:
+    build:
+      context: .
+      dockerfile: ./bun-server/Dockerfile
+    image: grantsite-dev # Explicit lowercase image name required
+    container_name: grantSite-dev
+    restart: unless-stopped
+    volumes:
+      - ./grant:/usr/app/public:ro # Live updates
+    ports:
+      - "${GRANT_SITE_PORT}:8080" # Maps to host port defined in .env
+    environment:
+      - NODE_ENV=development
+
+  # Exclude Cloudflare tunnel and other services for pure local dev of the static site
+  # If other services are needed for dev, they can be added here. 
+  # For now, scoping to grantSite as requested.
