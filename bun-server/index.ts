@@ -5,8 +5,8 @@ const server = Bun.serve({
   fetch(req) {
     const url = new URL(req.url);
 
-    // Security: Block dotfiles
-    if (url.pathname.split('/').some(part => part.startsWith('.'))) {
+    // Security: Block dotfiles and path traversal
+    if (url.pathname.split('/').some(part => part === '.' || part === '..' || part.startsWith('.'))) {
       return new Response("Not Found", { status: 404 });
     }
 
