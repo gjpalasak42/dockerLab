@@ -31,7 +31,7 @@ describe("Bun Static Server", () => {
                 }
                 // Mock static serve for test environment (mapping to test dir instead of real public)
                 // In real app, we use serve-static-bun("public")
-                // For test, we manualy serve from PUBLIC_DIR
+                // For test, we manually serve from PUBLIC_DIR
                 const filePath = join(PUBLIC_DIR, url.pathname);
                 const file = Bun.file(filePath);
                 return new Response(file);
