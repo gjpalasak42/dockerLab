@@ -59,7 +59,7 @@ services:
 #    image: postgres:14
 #    environment:
 #      - POSTGRES_USER=n8n
-#      - POSTGRES_PASSWORD=!!Thr33Turk3yK3ys!!
+#      - POSTGRES_PASSWORD=
 #      - POSTGRES_DB=n8n
 #    volumes:
 #      - postgres_data:/var/lib/postgresql/data
@@ -74,7 +74,7 @@ services:
 #      - DB_POSTGRESDB_HOST=db
 #      - DB_POSTGRESDB_DATABASE=n8n
 #      - DB_POSTGRESDB_USER=n8n
-#      - DB_POSTGRESDB_PASSWORD=!!Thr33Turk3yK3ys!!
+#      - DB_POSTGRESDB_PASSWORD=
       - N8N_BASIC_AUTH_ACTIVE=${N8N_BASIC_AUTH_ACTIVE}
       - N8N_BASIC_AUTH_USER=${N8N_BASIC_AUTH_USER}
       - N8N_BASIC_AUTH_PASSWORD=${N8N_BASIC_AUTH_PASSWORD}
