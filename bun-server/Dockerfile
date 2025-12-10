@@ -24,7 +24,7 @@ RUN addgroup -g 1001 -S bunuser && \
 # Switch to non-root user
 USER bunuser
 
-# Expose port 80
-EXPOSE 80
+# Expose port 8080 (non-privileged port for non-root user)
+EXPOSE 8080
 
 CMD ["bun", "run", "index.ts"]
