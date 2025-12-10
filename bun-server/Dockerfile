@@ -18,10 +18,8 @@ COPY Grant ./public
 
 # Create a non-root user and group to run the application
 RUN addgroup -g 1001 -S bunuser && \
-    adduser -u 1001 -S bunuser -G bunuser
-
-# Change ownership of the application directory to the non-root user
-RUN chown -R bunuser:bunuser /usr/app
+    adduser -u 1001 -S bunuser -G bunuser && \
+    chown -R bunuser:bunuser /usr/app
 
 # Switch to non-root user
 USER bunuser
