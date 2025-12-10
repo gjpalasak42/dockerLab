@@ -20,7 +20,7 @@ To build and deploy changes:
 docker compose up -d --build grantSite
 ```
 
-The server listens on port **80** inside the container (mapped to `GRANT_SITE_PORT` on host).
+The server listens on port **8080** inside the container (mapped to `GRANT_SITE_PORT` on host).
 
 ## Security
 - **Dotfile Protection**: The server explicitly returns `404 Not Found` for any path containing dotfiles (e.g., `.env`, `.git`).
