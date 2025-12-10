@@ -73,4 +73,4 @@ When moving to dynamic content, implement these additional layers:
 1.  **Input Validation**: Use Elysia's schema validation (based on TypeBox) to sanitise all inputs.
 2.  **CORS**: Configure Cross-Origin Resource Sharing if your API is accessed from other domains.
 3.  **Rate Limiting**: Protect against abuse using `elysia-rate-limit`.
-4.  **Helmet**: secure HTTP headers.
+4.  **Secure HTTP Headers**: Use Elysia-specific middleware or plugins to set security-related HTTP headers (e.g., [@elysiajs/secure-headers](https://github.com/elysiajs/secure-headers)), as Helmet is not compatible with Elysia.
