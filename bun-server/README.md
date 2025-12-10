@@ -63,7 +63,7 @@ const app = new Elysia()
         return { success: true };
     })
     
-    .listen(80);
+    .listen(8080);
 
 console.log(`Server running at ${app.server?.hostname}:${app.server?.port}`);
 ```
