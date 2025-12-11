@@ -14,7 +14,7 @@ RUN bun install --production
 COPY bun-server/index.ts ./
 
 # Copy static content from the Grant directory in the root context
-COPY Grant ./public
+COPY grant ./public
 
 # Create a non-root user and group to run the application
 RUN addgroup -g 1001 -S bunuser && \
