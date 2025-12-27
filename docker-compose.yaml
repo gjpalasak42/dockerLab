@@ -8,49 +8,78 @@ services:
     container_name: grantSite
     restart: unless-stopped
     volumes:
-      - ./grant:/usr/app/public:ro # Mounts your site files into the container
+      - ./Grant:/usr/app/public:ro # Mounts your site files into the container
     ports:
-      - "${GRANT_SITE_PORT}:8080" # Exposes this site on port 8081 (or configured) of your Mac Mini
+      - "127.0.0.1:${GRANT_SITE_PORT}:8080" # Bind to localhost only; expose via reverse proxy
+    healthcheck:
+      test: ["CMD", "bun", "-e", "fetch('http://localhost:8080/').then(r => process.exit(r.ok ? 0 : 1)).catch(() => process.exit(1))"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
 
-# --- Portainer --
+  # --- Portainer ---
   portainer:
-    image: portainer/portainer-ce:latest
+    image: portainer/portainer-ce:2.21.5-alpine
     container_name: portainer-ce
     restart: unless-stopped
     ports:
-      - "${PORTAINER_PORT}:9000" # Exposes Portainer's UI on port 9000 of your Mac Mini
+      - "127.0.0.1:${PORTAINER_PORT}:9000" # Bind to localhost only
     volumes:
-      - /var/run/docker.sock:/var/run/docker.sock # Gives Portainer access to manage Docker
+      - /var/run/docker.sock:/var/run/docker.sock:ro # Read-only where possible
       - portainer_data:/data # Persists Portainer's data
+    healthcheck:
+      test: ["CMD", "wget", "--spider", "-q", "http://localhost:9000/"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 15s
 
   # --- Uptime Kuma - Monitoring Dashboard ---
   uptime-kuma:
-    image: louislam/uptime-kuma:1
+    image: louislam/uptime-kuma:1.23.16
     container_name: uptime-kuma
     restart: unless-stopped
     ports:
-      - "${UPTIME_KUMA_PORT}:3001" # Exposes Uptime Kuma on port 3001 of your Mac Mini
+      - "127.0.0.1:${UPTIME_KUMA_PORT}:3001" # Bind to localhost only
     volumes:
       - uptime_kuma_data:/app/data # Persists Uptime Kuma's data
-      - /var/run/docker.sock:/var/run/docker.sock
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    healthcheck:
+      test: ["CMD", "node", "-e", "require('http').get('http://localhost:3001', r => process.exit(r.statusCode < 400 ? 0 : 1))"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 30s
 
   # --- PrivateBin - Secure Pastebin ---
   privatebin:
-    image: privatebin/nginx-fpm-alpine:latest
+    image: privatebin/nginx-fpm-alpine:1.7.6
     container_name: privatebin
     restart: unless-stopped
     ports:
-      - "${PRIVATEBIN_PORT}:8080" # Exposes PrivateBin on port 8084 of your Mac Mini
+      - "127.0.0.1:${PRIVATEBIN_PORT}:8080" # Bind to localhost only
+    healthcheck:
+      test: ["CMD", "wget", "--spider", "-q", "http://localhost:8080/"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
 
-# --- Cloudflare Tunnel Connector ---
+  # --- Cloudflare Tunnel Connector ---
   cloudflared:
-    image: cloudflare/cloudflared:latest
+    image: cloudflare/cloudflared:2024.12.2
     container_name: cloudflared-tunnel
     restart: unless-stopped
     command: tunnel --no-autoupdate run --token ${CLOUDFLARED_TUNNEL_TOKEN}
-    # Note: A token is now the preferred method. You get the token from the 
+    # Note: A token is now the preferred method. You get the token from the
     # Cloudflare Zero Trust dashboard when you select your tunnel.
-
+    healthcheck:
+      test: ["CMD", "cloudflared", "tunnel", "info"]
+      interval: 60s
+      timeout: 10s
+      retries: 3
+      start_period: 30s
 
 # --- Add future websites below this line ---
 
@@ -66,10 +95,10 @@ services:
 #      - postgres_data:/var/lib/postgresql/data
 
   n8n:
-    image: n8nio/n8n
+    image: n8nio/n8n:1.72.1
     container_name: n8n-automation
     ports:
-      - "${N8N_PORT}:5678"
+      - "127.0.0.1:${N8N_PORT}:5678" # Bind to localhost only
     environment:
 #      - DB_TYPE=postgresdb
 #      - DB_POSTGRESDB_HOST=db
@@ -87,6 +116,12 @@ services:
 #      - db
     volumes:
       - ./n8n_data:/home/node/.n8n
+    healthcheck:
+      test: ["CMD", "wget", "--spider", "-q", "http://localhost:5678/healthz"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 30s
 
 volumes:
   portainer_data:

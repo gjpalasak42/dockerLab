@@ -8,12 +8,18 @@ services:
     container_name: grantSite-dev
     restart: unless-stopped
     volumes:
-      - ./grant:/usr/app/public:ro # Live updates
+      - ./Grant:/usr/app/public:ro # Live updates
     ports:
-      - "${GRANT_SITE_PORT}:8080" # Maps to host port defined in .env
+      - "127.0.0.1:${GRANT_SITE_PORT}:8080" # Bind to localhost only
     environment:
       - NODE_ENV=development
+    healthcheck:
+      test: ["CMD", "bun", "-e", "fetch('http://localhost:8080/').then(r => process.exit(r.ok ? 0 : 1)).catch(() => process.exit(1))"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
 
   # Exclude Cloudflare tunnel and other services for pure local dev of the static site
-  # If other services are needed for dev, they can be added here. 
+  # If other services are needed for dev, they can be added here.
   # For now, scoping to grantSite as requested.
