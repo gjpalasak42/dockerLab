@@ -26,7 +26,7 @@ services:
     ports:
       - "127.0.0.1:${PORTAINER_PORT}:9000" # Bind to localhost only
     volumes:
-      - /var/run/docker.sock:/var/run/docker.sock:ro # Read-only where possible
+      - /var/run/docker.sock:/var/run/docker.sock # Portainer requires write access to manage Docker
       - portainer_data:/data # Persists Portainer's data
     healthcheck:
       test: ["CMD", "wget", "--spider", "-q", "http://localhost:9000/"]
