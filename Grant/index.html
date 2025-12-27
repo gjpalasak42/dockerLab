@@ -17,6 +17,48 @@
         .nav-link { transition: color 0.3s, border-color 0.3s; }
         .nav-link:hover { color: #22d3ee; }
         .nav-link.active { color: #22d3ee; border-bottom-color: #22d3ee; }
+        .new-badge {
+            font-size: 0.6rem;
+            padding: 0.15rem 0.4rem;
+            border-radius: 9999px;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            background-color: rgba(251, 146, 60, 0.2);
+            color: #fb923c;
+            border: 1px solid rgba(251, 146, 60, 0.4);
+            animation: pulse-glow 2s ease-in-out infinite;
+        }
+        @keyframes pulse-glow {
+            0%, 100% { box-shadow: 0 0 4px rgba(251, 146, 60, 0.3); }
+            50% { box-shadow: 0 0 8px rgba(251, 146, 60, 0.6); }
+        }
+        .hero-badge {
+            position: absolute;
+            top: -10px;
+            right: -12px;
+            font-size: 0.65rem;
+            padding: 0.25rem 0.5rem;
+            border-radius: 9999px;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            background: linear-gradient(135deg, #fb923c 0%, #f97316 100%);
+            color: #0D1117;
+            box-shadow: 0 2px 8px rgba(251, 146, 60, 0.5);
+            animation: bounce-attention 2s ease-in-out infinite;
+            z-index: 10;
+        }
+        @keyframes bounce-attention {
+            0%, 100% { transform: translateY(0) scale(1); }
+            25% { transform: translateY(-4px) scale(1.05); }
+            50% { transform: translateY(0) scale(1); }
+            75% { transform: translateY(-2px) scale(1.02); }
+        }
+        .cta-wrapper {
+            position: relative;
+            display: inline-block;
+        }
     </style>
 </head>
 <body class="text-gray-300">
@@ -42,15 +84,18 @@
                 <p class="text-base md:text-lg leading-relaxed max-w-2xl mb-10">
                     Welcome to my digital space. I'm a computer science student with a deep focus on offensive security. This site serves as a portfolio for my projects, a summary of my skills, and a point of contact.
                 </p>
-                <a href="./projects.html" class="inline-block bg-cyan-500 text-gray-900 font-bold py-3 px-8 rounded-lg hover:bg-cyan-400 transition-colors duration-300 font-mono">
-                    View Projects & Competitions
-                </a>
+                <div class="cta-wrapper">
+                    <a href="./projects.html" class="inline-block bg-cyan-500 text-gray-900 font-bold py-3 px-8 rounded-lg hover:bg-cyan-400 transition-colors duration-300 font-mono">
+                        View Projects & Competitions
+                    </a>
+                    <span class="hero-badge">New</span>
+                </div>
             </div>
         </main>
 
         <footer class="text-center p-6 mt-12 border-t border-gray-800">
             <div class="max-w-4xl mx-auto flex justify-between items-center text-sm text-gray-500 font-mono">
-                <span>v1.1</span>
+                <span>v1.2</span>
                 <span class="text-red-400">[!] This site is not in scope.</span>
             </div>
         </footer>

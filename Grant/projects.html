@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Grant Palasak | Projects</title>
+    <meta name="description" content="Portfolio of security-focused projects including Burp Suite extensions, homelab infrastructure, and UI/UX experiments by Grant Palasak.">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,7 +15,42 @@
         .nav-link { transition: color 0.3s, border-color 0.3s; }
         .nav-link:hover { color: #22d3ee; }
         .nav-link.active { color: #22d3ee; border-bottom-color: #22d3ee; }
-        .countdown-box { min-width: 80px; }
+        .status-badge {
+            font-size: 0.7rem;
+            padding: 0.2rem 0.6rem;
+            border-radius: 9999px;
+            font-weight: 500;
+            letter-spacing: 0.025em;
+            text-transform: uppercase;
+        }
+        .status-active { background-color: rgba(34, 197, 94, 0.15); color: #4ade80; border: 1px solid rgba(34, 197, 94, 0.3); }
+        .status-live { background-color: rgba(34, 211, 238, 0.15); color: #22d3ee; border: 1px solid rgba(34, 211, 238, 0.3); }
+        .status-experiment { background-color: rgba(168, 85, 247, 0.15); color: #c084fc; border: 1px solid rgba(168, 85, 247, 0.3); }
+        .tech-tag {
+            font-size: 0.7rem;
+            padding: 0.15rem 0.5rem;
+            border-radius: 0.25rem;
+            background-color: rgba(55, 65, 81, 0.5);
+            color: #9ca3af;
+        }
+        .project-card { transition: border-color 0.3s ease; }
+        .project-card:hover { border-color: rgba(34, 211, 238, 0.4); }
+        .new-badge {
+            font-size: 0.6rem;
+            padding: 0.15rem 0.4rem;
+            border-radius: 9999px;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            background-color: rgba(251, 146, 60, 0.2);
+            color: #fb923c;
+            border: 1px solid rgba(251, 146, 60, 0.4);
+            animation: pulse-glow 2s ease-in-out infinite;
+        }
+        @keyframes pulse-glow {
+            0%, 100% { box-shadow: 0 0 4px rgba(251, 146, 60, 0.3); }
+            50% { box-shadow: 0 0 8px rgba(251, 146, 60, 0.6); }
+        }
     </style>
 </head>
 <body class="text-gray-300">
@@ -32,20 +68,66 @@
         </header>
 
         <main class="flex-grow max-w-4xl mx-auto p-6 md:p-12 w-full">
-            <h1 class="text-3xl font-bold text-white mb-8">Projects & Competitions</h1>
+            <h1 class="text-3xl font-bold text-white mb-2">Projects</h1>
+            <p class="text-gray-400 mb-10">A curated selection of work reflecting my focus on security tooling, infrastructure design, and modern development practices.</p>
 
+            <div class="space-y-10">
 
-            <div class="space-y-12">
-
-                <div class="bg-gray-800/50 border border-gray-700 rounded-lg p-6">
-                    <h2 class="text-2xl font-semibold text-cyan-400 mb-2">Project Kepler</h2>
-                    <p class="text-sm text-gray-400 mb-4">Burp Suite Extension</p>
-                    <p class="mb-4">Project Kepler is designed to help penetration testers catalog their attacks and document manual testing efforts. It allows you to "record" specific requests, categorize them (e.g., SQLi, XSS), assign a status (Vulnerable, Safe), and add notes. This prevents redundant testing and facilitates knowledge sharing within teams.</p>
-                    <a href="https://github.com/gjpalasak42/projectKepler" target="_blank" class="inline-block bg-cyan-900/50 border border-cyan-500 text-cyan-400 font-semibold py-2 px-4 rounded hover:bg-cyan-800/50 transition duration-300 mb-4">View on GitHub</a>
-                    <p class="text-sm text-gray-400">I have also developed components for custom enterprise extensions for Burp Suite using the Java-based Montoya API to automate specific testing workflows in professional environments.</p>
+                <!-- Project Kepler -->
+                <div class="project-card bg-gray-800/50 border border-gray-700 rounded-lg p-6">
+                    <div class="flex flex-wrap items-center gap-3 mb-3">
+                        <h2 class="text-2xl font-semibold text-cyan-400">projectKepler</h2>
+                        <span class="status-badge status-active">Active Tooling</span>
+                        <span class="new-badge">New</span>
+                    </div>
+                    <p class="text-sm text-gray-400 italic mb-4">Solving documentation debt in collaborative penetration testing.</p>
+                    <p class="mb-4">Built to facilitate seamless handoffs between testers. projectKepler allows users to tag endpoints as vulnerable, safe, or "needs investigation" directly within Burp Suite's proxy. The goal was to prevent redundant testing and create a shared understanding of what's been covered—a common pain point in team-based engagements.</p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="tech-tag">Java 17</span>
+                        <span class="tech-tag">Burp Extender API</span>
+                        <span class="tech-tag">JSON Persistence</span>
+                    </div>
+                    <a href="https://github.com/gjpalasak42/projectKepler" target="_blank" class="inline-block bg-cyan-900/50 border border-cyan-500 text-cyan-400 font-semibold py-2 px-4 rounded hover:bg-cyan-800/50 transition duration-300 text-sm">View on GitHub</a>
                 </div>
 
-                <div class="bg-gray-800/50 border border-gray-700 rounded-lg p-6">
+                <!-- dockerLab -->
+                <div class="project-card bg-gray-800/50 border border-gray-700 rounded-lg p-6">
+                    <div class="flex flex-wrap items-center gap-3 mb-3">
+                        <h2 class="text-2xl font-semibold text-cyan-400">dockerLab</h2>
+                        <span class="status-badge status-live">Live Infrastructure</span>
+                        <span class="new-badge">New</span>
+                    </div>
+                    <p class="text-sm text-gray-400 italic mb-4">Security-first homelab orchestration.</p>
+                    <p class="mb-4">This stack currently hosts the very website you're reading. It's a production-ready environment running on local hardware, utilizing Bun for performance and Cloudflare Tunnels for zero-trust, localhost-only exposure. The architecture prioritizes minimal attack surface—there are no publicly exposed ports, and all traffic is authenticated through Cloudflare's network.</p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="tech-tag">Docker</span>
+                        <span class="tech-tag">Bun</span>
+                        <span class="tech-tag">Cloudflare Zero Trust</span>
+                        <span class="tech-tag">PostgreSQL</span>
+                    </div>
+                    <a href="https://github.com/gjpalasak42/dockerLab" target="_blank" class="inline-block bg-cyan-900/50 border border-cyan-500 text-cyan-400 font-semibold py-2 px-4 rounded hover:bg-cyan-800/50 transition duration-300 text-sm">View on GitHub</a>
+                </div>
+
+                <!-- threat-tracker -->
+                <div class="project-card bg-gray-800/50 border border-gray-700 rounded-lg p-6">
+                    <div class="flex flex-wrap items-center gap-3 mb-3">
+                        <h2 class="text-2xl font-semibold text-cyan-400">threat-tracker</h2>
+                        <span class="status-badge status-experiment">UI/UX Experiment</span>
+                        <span class="new-badge">New</span>
+                    </div>
+                    <p class="text-sm text-gray-400 italic mb-4">A UI/UX experiment in threat intelligence visualization.</p>
+                    <p class="mb-4">A proof-of-concept platform built to explore Next.js 16 and Tailwind CSS 4. While it functions as a simple OSINT lookup tool for AbuseIPDB and AlienVault OTX, its primary purpose was an exploration of modern frontend architecture—specifically, real-time data streaming with Server-Sent Events (SSE) and schema management with Drizzle ORM.</p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="tech-tag">Next.js 16</span>
+                        <span class="tech-tag">TypeScript</span>
+                        <span class="tech-tag">Drizzle ORM</span>
+                        <span class="tech-tag">Tailwind CSS 4</span>
+                    </div>
+                    <a href="https://github.com/gjpalasak42/threat-tracker" target="_blank" class="inline-block bg-cyan-900/50 border border-cyan-500 text-cyan-400 font-semibold py-2 px-4 rounded hover:bg-cyan-800/50 transition duration-300 text-sm">View on GitHub</a>
+                </div>
+
+                <!-- Certifications -->
+                <div class="project-card bg-gray-800/50 border border-gray-700 rounded-lg p-6">
                     <h2 class="text-2xl font-semibold text-cyan-400 mb-2">Certifications</h2>
                     <p class="text-sm text-gray-400 mb-4">Professional certifications currently in progress.</p>
                     <div class="space-y-3">
@@ -60,14 +142,8 @@
                     </div>
                 </div>
 
-                <div class="bg-gray-800/50 border border-gray-700 rounded-lg p-6">
-                    <h2 class="text-2xl font-semibold text-cyan-400 mb-2">Self-Hosted Docker Homelab</h2>
-                    <p class="text-sm text-gray-400 mb-4">A practical application of DevSecOps and automation.</p>
-                    <p>This website itself is a project, running on the Bun runtime environment within a Docker container on a home server. The entire homelab environment runs containerized services (including n8n for AI automation) and is securely exposed to the internet via secure tunneling. This setup gives me a hands-on lab for experimenting with network security, containerization, and secure infrastructure management.</p>
-                </div>
-
-
-                <div class="bg-gray-800/50 border border-gray-700 rounded-lg p-6">
+                <!-- CPTC -->
+                <div class="project-card bg-gray-800/50 border border-gray-700 rounded-lg p-6">
                     <h2 class="text-2xl font-semibold text-cyan-400 mb-2">Collegiate Penetration Testing Competition (CPTC)</h2>
                     <p class="text-sm text-gray-400 mb-4">Former Team Captain for Tennessee Tech's CyberEagles</p>
                     <p class="mb-4">As team captain, I led strategy, technical execution, and client-facing presentations in a simulated, real-world penetration testing engagement against live enterprise networks. This competition was a premier event for developing and demonstrating practical offensive security skills.</p>
@@ -82,12 +158,22 @@
                         </div>
                     </div>
                 </div>
+
             </div>
+
+            <!-- Workflow Section -->
+            <section class="mt-16 pt-8 border-t border-gray-700/50">
+                <h2 class="text-xl font-semibold text-white mb-4 font-mono">// Development Workflow</h2>
+                <p class="text-gray-400 text-sm leading-relaxed">
+                    These projects were developed using an agentic workflow with tools like Google's Antigravity and GitHub Copilot. My interest lies in exploring how AI can meaningfully augment security hardening, automate repetitive code review, and accelerate CI/CD pipelines—while keeping the human in the loop for critical decisions. This approach reflects my belief that effective security work is about amplifying expertise, not replacing it.
+                </p>
+            </section>
+
         </main>
 
         <footer class="text-center p-6 mt-12 border-t border-gray-800">
             <div class="max-w-4xl mx-auto flex justify-between items-center text-sm text-gray-500 font-mono">
-                <span>v1.1</span>
+                <span>v1.2</span>
                 <span class="text-red-400">[!] This site is not in scope.</span>
             </div>
         </footer>
