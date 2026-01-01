@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Grant Palasak | Projects</title>
+    <link rel="icon" type="image/png" href="./favicon.png">
     <meta name="description" content="Portfolio of security-focused projects including Burp Suite extensions, homelab infrastructure, and UI/UX experiments by Grant Palasak.">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -58,11 +59,16 @@
         <header class="max-w-4xl mx-auto w-full p-6 md:p-8">
             <nav class="flex justify-between items-center">
                 <a href="./index.html" class="text-xl font-bold text-white font-mono">Grant Palasak</a>
-                <ul class="flex space-x-6 md:space-x-8 text-gray-400 font-mono text-sm">
+                <ul class="flex items-center space-x-6 md:space-x-8 text-gray-400 font-mono text-sm">
                     <li><a href="./index.html" class="nav-link border-b-2 border-transparent pb-1">/home</a></li>
                     <li><a href="./about.html" class="nav-link border-b-2 border-transparent pb-1">/about</a></li>
                     <li><a href="./projects.html" class="nav-link active border-b-2 pb-1">/projects</a></li>
                     <li><a href="./contact.html" class="nav-link border-b-2 border-transparent pb-1">/contact</a></li>
+                    <li>
+                        <a href="https://intel.palasak.com" target="_blank" class="hidden md:inline-block ml-2 px-3 py-1 border border-cyan-500/50 rounded text-cyan-400 text-xs font-mono hover:bg-cyan-900/50 hover:border-cyan-400 transition-all uppercase tracking-wider">
+                            View Threat DB
+                        </a>
+                    </li>
                 </ul>
             </nav>
         </header>
@@ -123,7 +129,13 @@
                         <span class="tech-tag">Drizzle ORM</span>
                         <span class="tech-tag">Tailwind CSS 4</span>
                     </div>
-                    <a href="https://github.com/gjpalasak42/threat-tracker" target="_blank" class="inline-block bg-cyan-900/50 border border-cyan-500 text-cyan-400 font-semibold py-2 px-4 rounded hover:bg-cyan-800/50 transition duration-300 text-sm">View on GitHub</a>
+                    <div class="flex flex-col gap-3">
+                        <div class="flex flex-wrap gap-3">
+                            <a href="https://github.com/gjpalasak42/threat-tracker" target="_blank" class="inline-block bg-cyan-900/50 border border-cyan-500 text-cyan-400 font-semibold py-2 px-4 rounded hover:bg-cyan-800/50 transition duration-300 text-sm">View on GitHub</a>
+                            <a href="https://intel.palasak.com" target="_blank" class="inline-block bg-cyan-900/50 border border-cyan-500 text-cyan-400 font-semibold py-2 px-4 rounded hover:bg-cyan-800/50 transition duration-300 text-sm">View Live</a>
+                        </div>
+                        <p class="text-xs text-gray-500 italic">Note: You can create your own account to use the system today!</p>
+                    </div>
                 </div>
 
                 <!-- Certifications -->
