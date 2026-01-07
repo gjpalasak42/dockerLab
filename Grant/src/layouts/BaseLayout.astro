@@ -1,11 +1,6 @@
 ---
-/**
- * BaseLayout.astro
- * Shared layout for all pages - eliminates code duplication across HTML files.
- * 
- * ZERO-JS Architecture: This layout ships no JavaScript by default.
- * Pages can opt-in to inline scripts via <script is:inline> when needed.
- */
+// BaseLayout.astro - Shared layout for all pages
+// ZERO-JS Architecture: Ships no JavaScript by default. Pages opt-in via inline scripts.
 interface Props {
   title: string;
   description?: string;
@@ -57,7 +52,7 @@ const { title, description = "Grant Palasak - Cybersecurity Student & Technology
               </a>
             </li>
             <li>
-              <a href="https://intel.palasak.com" target="_blank" class="hidden md:inline-block ml-2 px-3 py-1 border border-cyan-500/50 rounded text-cyan-400 text-xs font-mono hover:bg-cyan-900/50 hover:border-cyan-400 transition-all uppercase tracking-wider">
+              <a href="https://intel.palasak.com" target="_blank" rel="noopener noreferrer" class="hidden md:inline-block ml-2 px-3 py-1 border border-cyan-500/50 rounded text-cyan-400 text-xs font-mono hover:bg-cyan-900/50 hover:border-cyan-400 transition-all uppercase tracking-wider">
                 View Threat DB
               </a>
             </li>
