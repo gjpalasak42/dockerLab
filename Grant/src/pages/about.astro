@@ -1,0 +1,53 @@
+---
+/**
+ * about.astro - About page
+ * 
+ * ZERO-JS: This page ships no JavaScript - pure static content.
+ */
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Grant Palasak | About" description="About Grant Palasak - Cybersecurity professional pursuing a B.S. in Computer Science with a focus on offensive security.">
+  <section class="mb-12">
+    <h1 class="text-3xl font-bold text-white mb-4 font-mono">About Me</h1>
+    <p class="text-base leading-relaxed">
+      I am a highly motivated and results-driven cybersecurity professional, currently pursuing a B.S. in Computer Science at Tennessee Technological University with a concentration in Information Assurance and Cybersecurity. My passion lies in offensive security methodologies, penetration testing, and security assessments. I am eager to contribute innovative solutions to enhance organizational security in a dynamic, collaborative environment.
+    </p>
+    <p class="text-base leading-relaxed mt-4 bg-gray-800/50 border border-cyan-500/20 rounded-lg p-4">
+      <strong class="text-cyan-400">Status:</strong> I am not currently seeking new employment opportunities, but I am always open to connecting with professionals in the tech and security space.
+    </p>
+  </section>
+  
+  <section class="mb-12">
+    <h2 class="text-2xl font-bold text-white border-b-2 border-cyan-500/30 pb-2 mb-6 font-mono">Technical Skills</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div class="bg-gray-800/50 border border-gray-700 rounded-lg p-4">
+        <h3 class="font-bold text-cyan-400 mb-2 font-mono">Offensive Security</h3>
+        <ul class="list-disc list-inside text-sm space-y-1">
+          <li>Web & Network Assessments</li>
+          <li>Basic Mobile App Testing (Android)</li>
+          <li>GenAI System Evaluations</li>
+          <li>Custom Tool Development</li>
+        </ul>
+      </div>
+      <div class="bg-gray-800/50 border border-gray-700 rounded-lg p-4">
+        <h3 class="font-bold text-cyan-400 mb-2 font-mono">Languages & Tech</h3>
+        <ul class="list-disc list-inside text-sm space-y-1">
+          <li>Python, Java, C++, Bash</li>
+          <li>Burp Suite API</li>
+          <li>React Native</li>
+          <li>Power Automate</li>
+        </ul>
+      </div>
+      <div class="bg-gray-800/50 border border-gray-700 rounded-lg p-4">
+        <h3 class="font-bold text-cyan-400 mb-2 font-mono">Dev & Ops</h3>
+        <ul class="list-disc list-inside text-sm space-y-1">
+          <li>Software Development</li>
+          <li>DevSecOps Principles</li>
+          <li>Agile/Scrum Frameworks</li>
+          <li>Docker & Containerization</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

@@ -7,8 +7,8 @@ services:
     image: grantsite-prod # Explicit lowercase image name required
     container_name: grantSite
     restart: unless-stopped
-    volumes:
-      - ./Grant:/usr/app/public:ro # Mounts your site files into the container
+    # NOTE: No volume mount - Astro builds static files inside the container during docker build
+    # The Dockerfile copies Grant/ → builds with Astro → serves from dist/
     ports:
       - "127.0.0.1:${GRANT_SITE_PORT}:8080" # Bind to localhost only; expose via reverse proxy
     healthcheck:
