@@ -12,10 +12,16 @@ postgred_data/
 .vscode/
 *.log
 
-# Node/npm caches (if present)
+# Node/Bun dependencies and caches
 node_modules/
 npm-debug.log*
+bun.lock
+
+# Astro build output and cache
+Grant/dist/
+Grant/.astro/
 
 # Python caches (if any utils/scripts get added)
 __pycache__/
 *.pyc
+
