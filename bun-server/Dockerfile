@@ -2,19 +2,28 @@ FROM oven/bun:1.1.18-alpine
 
 WORKDIR /usr/app
 
-# Files are copied relative to the build context (project root)
-# Copy package files from the bun-server source directory
-COPY bun-server/package.json ./
-# Copy bun.lockb if it exists (it might not if we just created it, but good practice)
-# We won't strictly fail without it, but bun install will generate one.
+# --- Stage 1: Build the Astro site ---
+# Copy the Astro project source (Grant directory in the context root)
+COPY Grant ./website
 
+WORKDIR /usr/app/website
+
+# Install dependencies and build static site
+RUN bun install
+RUN bun run build
+
+# --- Stage 2: Setup the static server ---
+WORKDIR /usr/app
+
+# Copy server package files
+COPY bun-server/package.json ./
 RUN bun install --production
 
 # Copy server code
 COPY bun-server/index.ts ./
 
-# Copy static content from the Grant directory in the root context
-COPY Grant ./public
+# Copy built static files from Astro dist to public
+RUN mkdir -p ./public && cp -r website/dist/* ./public/
 
 # Create a non-root user and group to run the application
 RUN addgroup -g 1001 -S bunuser && \
@@ -32,3 +41,4 @@ HEALTHCHECK --interval=30s --timeout=10s --start-period=10s --retries=3 \
     CMD bun -e "fetch('http://localhost:8080/').then(r => process.exit(r.ok ? 0 : 1)).catch(() => process.exit(1))"
 
 CMD ["bun", "run", "index.ts"]
+
