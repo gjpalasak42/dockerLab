@@ -1,0 +1,29 @@
+# Secrets and local configuration
+.env
+.env.*
+!.env.example
+
+# Git and editor metadata
+.git
+.github
+.DS_Store
+.vscode
+
+# Dependencies and generated artifacts
+node_modules
+**/node_modules
+Grant/dist
+Grant/.astro
+dist
+build
+
+# Runtime data and logs
+n8n_data
+uptime_kuma_data
+portainer_data
+postgred_data
+*.log
+
+# Local caches
+__pycache__
+*.pyc
