@@ -6,7 +6,7 @@ interface Props {
   description?: string;
 }
 
-const { title, description = "Grant Palasak - Cybersecurity Student & Technology Enthusiast" } = Astro.props;
+const { title, description = "Grant Palasak - Junior Penetration Testing Engineer focused on offensive security, tooling, and homelab infrastructure" } = Astro.props;
 ---
 
 <!DOCTYPE html>
@@ -21,39 +21,39 @@ const { title, description = "Grant Palasak - Cybersecurity Student & Technology
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
-<body class="bg-dark-bg text-gray-300 font-sans">
-  <div class="flex flex-col min-h-screen">
-    <header class="max-w-4xl mx-auto w-full p-6 md:p-8">
+<body class="bg-[#0f1110] text-[#d8d2c4] font-sans antialiased">
+  <div class="site-shell flex flex-col min-h-screen">
+    <header class="max-w-6xl mx-auto w-full px-5 py-5 md:px-8 md:py-7">
       <slot name="nav">
         <!-- Default nav can be overridden per-page if needed -->
-        <nav class="flex justify-between items-center">
-          <a href="/" class="text-xl font-bold text-white font-mono">Grant Palasak</a>
-          <ul class="flex items-center space-x-6 md:space-x-8 text-gray-400 font-mono text-sm">
+        <nav class="flex flex-col gap-4 border-b border-[#2b2f2b] pb-5 sm:flex-row sm:items-center sm:justify-between">
+          <a href="/" class="text-sm font-semibold uppercase tracking-[0.22em] text-[#f2eadc]">Grant Palasak</a>
+          <ul class="flex flex-wrap items-center gap-4 text-xs uppercase tracking-[0.18em] text-[#8f948b] md:gap-6">
             <li>
-              <a href="/" class:list={["nav-link border-b-2 pb-1", Astro.url.pathname === "/" ? "active border-cyan-400 text-cyan-400" : "border-transparent"]}>
-                /home
+              <a href="/" class:list={["nav-link", Astro.url.pathname === "/" ? "active" : ""]}>
+                Home
               </a>
             </li>
             <li>
-              <a href="/about" class:list={["nav-link border-b-2 pb-1", Astro.url.pathname === "/about" || Astro.url.pathname === "/about/" ? "active border-cyan-400 text-cyan-400" : "border-transparent"]}>
-                /about
+              <a href="/about" class:list={["nav-link", Astro.url.pathname === "/about" || Astro.url.pathname === "/about/" ? "active" : ""]}>
+                About
               </a>
             </li>
             <li>
-              <a href="/projects" class:list={["nav-link border-b-2 pb-1", Astro.url.pathname === "/projects" || Astro.url.pathname === "/projects/" ? "active border-cyan-400 text-cyan-400" : "border-transparent"]}>
-                /projects
+              <a href="/projects" class:list={["nav-link", Astro.url.pathname === "/projects" || Astro.url.pathname === "/projects/" ? "active" : ""]}>
+                Projects
               </a>
             </li>
             <li>
-              <a href="/contact" class:list={["nav-link border-b-2 pb-1", Astro.url.pathname === "/contact" || Astro.url.pathname === "/contact/" ? "active border-cyan-400 text-cyan-400" : "border-transparent"]}>
-                /contact
+              <a href="/contact" class:list={["nav-link", Astro.url.pathname === "/contact" || Astro.url.pathname === "/contact/" ? "active" : ""]}>
+                Contact
               </a>
             </li>
             <li>
-              <a href="https://intel.palasak.com" target="_blank" rel="noopener noreferrer" class="hidden md:inline-block ml-2 px-3 py-1 border border-cyan-500/50 rounded text-cyan-400 text-xs font-mono hover:bg-cyan-900/50 hover:border-cyan-400 transition-all uppercase tracking-wider">
-                View Threat DB
+              <a href="https://intel.palasak.com" target="_blank" rel="noopener noreferrer" class="nav-link">
+                Threat DB
               </a>
             </li>
           </ul>
@@ -61,14 +61,14 @@ const { title, description = "Grant Palasak - Cybersecurity Student & Technology
       </slot>
     </header>
 
-    <main class="flex-grow max-w-4xl mx-auto p-6 md:p-12 w-full">
+    <main class="flex-grow max-w-6xl mx-auto w-full px-5 py-10 md:px-8 md:py-16">
       <slot />
     </main>
 
-    <footer class="text-center p-6 mt-12 border-t border-gray-800">
-      <div class="max-w-4xl mx-auto flex justify-between items-center text-sm text-gray-500 font-mono">
-        <span>v1.3</span>
-        <span class="text-red-400">[!] This site is not in scope.</span>
+    <footer class="px-5 py-8 md:px-8">
+      <div class="max-w-6xl mx-auto flex flex-col gap-3 border-t border-[#2b2f2b] pt-6 text-xs uppercase tracking-[0.18em] text-[#74796f] sm:flex-row sm:items-center sm:justify-between">
+        <span>Grant Palasak v1.4</span>
+        <span>Personal site, not an engagement target</span>
       </div>
     </footer>
   </div>
@@ -76,101 +76,132 @@ const { title, description = "Grant Palasak - Cybersecurity Student & Technology
 </html>
 
 <style is:global>
-  /* Nav link hover effects */
+  :root {
+    color-scheme: dark;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background:
+      radial-gradient(circle at top left, rgba(181, 146, 91, 0.12), transparent 34rem),
+      linear-gradient(135deg, rgba(255, 255, 255, 0.025) 0 1px, transparent 1px 12px),
+      #0f1110;
+  }
+
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    background: linear-gradient(90deg, rgba(255,255,255,0.035), transparent 18%, transparent 82%, rgba(255,255,255,0.025));
+    opacity: 0.45;
+  }
+
+  ::selection {
+    background: rgba(194, 160, 104, 0.35);
+    color: #fff7ea;
+  }
+
   .nav-link {
-    transition: color 0.3s, border-color 0.3s;
+    color: inherit;
+    transition: color 180ms ease;
   }
+
   .nav-link:hover {
-    color: #22d3ee;
+    color: #f2eadc;
   }
-  
-  /* Hero glow effect */
-  .glow {
-    text-shadow: 0 0 8px rgba(34, 211, 238, 0.4), 0 0 20px rgba(34, 211, 238, 0.2);
+
+  .nav-link.active {
+    color: #c9a66b;
   }
-  
-  /* Typing cursor */
-  .typing-cursor {
-    background-color: #22d3ee;
-    width: 10px;
-    animation: blink 1s step-end infinite;
+
+  .eyebrow {
+    font-family: "Fira Code", monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #a8a395;
   }
-  
-  /* Status badges for projects page */
+
+  .text-accent {
+    color: #c9a66b;
+  }
+
+  .rule {
+    border-color: #2b2f2b;
+  }
+
   .status-badge {
-    font-size: 0.7rem;
-    padding: 0.2rem 0.6rem;
+    border: 1px solid rgba(201, 166, 107, 0.28);
     border-radius: 9999px;
-    font-weight: 500;
-    letter-spacing: 0.025em;
-    text-transform: uppercase;
-  }
-  .status-active { background-color: rgba(34, 197, 94, 0.15); color: #4ade80; border: 1px solid rgba(34, 197, 94, 0.3); }
-  .status-live { background-color: rgba(34, 211, 238, 0.15); color: #22d3ee; border: 1px solid rgba(34, 211, 238, 0.3); }
-  .status-experiment { background-color: rgba(168, 85, 247, 0.15); color: #c084fc; border: 1px solid rgba(168, 85, 247, 0.3); }
-  
-  /* Tech tags */
-  .tech-tag {
-    font-size: 0.7rem;
-    padding: 0.15rem 0.5rem;
-    border-radius: 0.25rem;
-    background-color: rgba(55, 65, 81, 0.5);
-    color: #9ca3af;
-  }
-  
-  /* Project card hover */
-  .project-card {
-    transition: border-color 0.3s ease;
-  }
-  .project-card:hover {
-    border-color: rgba(34, 211, 238, 0.4);
-  }
-  
-  /* New badge with animation */
-  .new-badge {
-    font-size: 0.6rem;
-    padding: 0.15rem 0.4rem;
-    border-radius: 9999px;
-    font-weight: 600;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-    background-color: rgba(251, 146, 60, 0.2);
-    color: #fb923c;
-    border: 1px solid rgba(251, 146, 60, 0.4);
-    animation: pulse-glow 2s ease-in-out infinite;
-  }
-  
-  /* Hero badge with bounce */
-  .hero-badge {
-    position: absolute;
-    top: -10px;
-    right: -12px;
+    color: #c9a66b;
+    font-family: "Fira Code", monospace;
     font-size: 0.65rem;
-    padding: 0.25rem 0.5rem;
-    border-radius: 9999px;
-    font-weight: 700;
-    letter-spacing: 0.05em;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    padding: 0.2rem 0.55rem;
     text-transform: uppercase;
-    background: linear-gradient(135deg, #fb923c 0%, #f97316 100%);
-    color: #0D1117;
-    box-shadow: 0 2px 8px rgba(251, 146, 60, 0.5);
-    animation: bounce-attention 2s ease-in-out infinite;
-    z-index: 10;
   }
-  
-  /* Animations */
-  @keyframes blink {
-    from, to { background-color: transparent; }
-    50% { background-color: #22d3ee; }
+
+  .tech-tag {
+    color: #8f948b;
+    font-family: "Fira Code", monospace;
+    font-size: 0.72rem;
   }
-  @keyframes pulse-glow {
-    0%, 100% { box-shadow: 0 0 4px rgba(251, 146, 60, 0.3); }
-    50% { box-shadow: 0 0 8px rgba(251, 146, 60, 0.6); }
+
+  .quiet-link {
+    color: #d8d2c4;
+    text-decoration: underline;
+    text-decoration-color: rgba(201, 166, 107, 0.35);
+    text-underline-offset: 0.24em;
+    transition: color 180ms ease, text-decoration-color 180ms ease;
   }
-  @keyframes bounce-attention {
-    0%, 100% { transform: translateY(0) scale(1); }
-    25% { transform: translateY(-4px) scale(1.05); }
-    50% { transform: translateY(0) scale(1); }
-    75% { transform: translateY(-2px) scale(1.02); }
+
+  .quiet-link:hover {
+    color: #fff7ea;
+    text-decoration-color: rgba(201, 166, 107, 0.85);
+  }
+
+  .reveal {
+    animation: reveal-up 700ms ease both;
+  }
+
+  .reveal-delay {
+    animation-delay: 120ms;
+  }
+
+  @keyframes reveal-up {
+    from {
+      opacity: 0;
+      transform: translateY(12px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    *, *::before, *::after {
+      animation-duration: 1ms !important;
+      animation-iteration-count: 1 !important;
+      scroll-behavior: auto !important;
+      transition-duration: 1ms !important;
+    }
+  }
+
+  @media (max-width: 640px) {
+    body {
+      background:
+        radial-gradient(circle at top left, rgba(181, 146, 91, 0.11), transparent 24rem),
+        #0f1110;
+    }
   }
 </style>

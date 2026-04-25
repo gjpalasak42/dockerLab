@@ -28,11 +28,11 @@ A self-hosted Docker Compose stack for personal infrastructure, including a stat
 | Service       | Description                          | Internal Port | Default Host Port | Image                              |
 |---------------|--------------------------------------|---------------|-------------------|------------------------------------|
 | grantSite     | Static site server (Bun)             | 8080          | 8081              | Custom (bun-server/Dockerfile)     |
-| portainer     | Docker management UI                 | 9000          | 9000              | portainer/portainer-ce:2.21.5-alpine |
-| uptime-kuma   | Uptime monitoring dashboard          | 3001          | 3001              | louislam/uptime-kuma:1.23.16       |
+| portainer     | Docker management UI                 | 9000          | 9000              | portainer/portainer-ce:2.39.1-alpine |
+| uptime-kuma   | Uptime monitoring dashboard          | 3001          | 3001              | louislam/uptime-kuma:2.2.1         |
 | privatebin    | Encrypted pastebin                   | 8080          | 8084              | privatebin/nginx-fpm-alpine:1.7.6  |
-| cloudflared   | Cloudflare Tunnel connector          | -             | -                 | cloudflare/cloudflared:2024.12.2   |
-| n8n           | Workflow automation                  | 5678          | 5678              | n8nio/n8n:1.72.1                   |
+| cloudflared   | Cloudflare Tunnel connector          | -             | -                 | cloudflare/cloudflared:2026.3.0    |
+| n8n           | Workflow automation                  | 5678          | 5678              | n8nio/n8n:1.123.31                 |
 
 ## Quick Start
 
@@ -127,6 +127,11 @@ docker compose pull
 # Recreate containers with new images
 docker compose up -d
 ```
+
+### Major Version Migration Notes
+
+- **Uptime Kuma v1 → v2:** Back up the `uptime_kuma_data` Docker volume before starting the upgraded container. The v2 migration rewrites monitoring data and must not be interrupted.
+- **n8n v1 → v2:** This stack intentionally remains on the latest v1 release line. Before moving to n8n v2, run n8n's built-in migration report, review breaking changes, and back up `n8n_data`.
 
 ## Development
 

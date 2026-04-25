@@ -20,7 +20,7 @@ services:
 
   # --- Portainer ---
   portainer:
-    image: portainer/portainer-ce:2.21.5-alpine
+    image: portainer/portainer-ce:2.39.1-alpine
     container_name: portainer-ce
     restart: unless-stopped
     ports:
@@ -37,7 +37,7 @@ services:
 
   # --- Uptime Kuma - Monitoring Dashboard ---
   uptime-kuma:
-    image: louislam/uptime-kuma:1.23.16
+    image: louislam/uptime-kuma:2.2.1
     container_name: uptime-kuma
     restart: unless-stopped
     ports:
@@ -68,7 +68,7 @@ services:
 
   # --- Cloudflare Tunnel Connector ---
   cloudflared:
-    image: cloudflare/cloudflared:2024.12.2
+    image: cloudflare/cloudflared:2026.3.0
     container_name: cloudflared-tunnel
     restart: unless-stopped
     command: tunnel --no-autoupdate run --token ${CLOUDFLARED_TUNNEL_TOKEN}
@@ -95,7 +95,7 @@ services:
 #      - postgres_data:/var/lib/postgresql/data
 
   n8n:
-    image: n8nio/n8n:1.72.1
+    image: n8nio/n8n:1.123.31
     container_name: n8n-automation
     ports:
       - "127.0.0.1:${N8N_PORT}:5678" # Bind to localhost only

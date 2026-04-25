@@ -1,8 +1,9 @@
 import serveStatic from "serve-static-bun";
 
-const server = Bun.serve({
-  port: 8080, // Use non-privileged port for running as non-root user
-  fetch(req) {
+export function createStaticFetchHandler(publicDir = "public") {
+  const servePublic = serveStatic(publicDir);
+
+  return (req: Request) => {
     const url = new URL(req.url);
 
     // Security: Block dotfiles and path traversal
@@ -11,8 +12,15 @@ const server = Bun.serve({
     }
 
     // Serve static files from public directory
-    return serveStatic("public")(req);
-  },
-});
+    return servePublic(req);
+  };
+}
 
-console.log(`Listening on http://localhost:${server.port}`);
+if (import.meta.main) {
+  const server = Bun.serve({
+    port: 8080, // Use non-privileged port for running as non-root user
+    fetch: createStaticFetchHandler(),
+  });
+
+  console.log(`Listening on http://localhost:${server.port}`);
+}
