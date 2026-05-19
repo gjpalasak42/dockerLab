@@ -133,6 +133,12 @@ docker compose up -d
 - **Uptime Kuma v1 → v2:** Back up the `uptime_kuma_data` Docker volume before starting the upgraded container. The v2 migration rewrites monitoring data and must not be interrupted.
 - **n8n v1 → v2:** This stack intentionally remains on the latest v1 release line. Before moving to n8n v2, run n8n's built-in migration report, review breaking changes, and back up `n8n_data`.
 
+## Agent Operations
+
+Remote agents managing this lab should read [AGENTS.md](AGENTS.md) before
+making changes. It defines the lab-management mission, public-site safety rules,
+and actions that require explicit permission.
+
 ## Development
 
 ### Static Site Development
