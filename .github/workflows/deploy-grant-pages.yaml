@@ -1,0 +1,51 @@
+name: Deploy Grant Site to Cloudflare Pages
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "Grant/**"
+      - ".github/workflows/deploy-grant-pages.yaml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: grant-site-pages-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    name: Build and Deploy Grant Site
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
+      - name: Install dependencies
+        working-directory: ./Grant
+        run: bun install --frozen-lockfile
+
+      - name: Build Astro site
+        working-directory: ./Grant
+        run: bun run build
+
+      - name: Verify Pages build output
+        working-directory: ./Grant
+        run: |
+          test -f dist/index.html
+          test -f dist/about/index.html
+          test -f dist/projects/index.html
+          test -f dist/contact/index.html
+          test -f dist/404.html
+
+      - name: Deploy to Cloudflare Pages
+        env:
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+        run: npx wrangler@4 pages deploy Grant/dist --project-name=grant-site --branch=main

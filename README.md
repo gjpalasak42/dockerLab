@@ -1,6 +1,6 @@
 # dockerLab
 
-A self-hosted Docker Compose stack for personal infrastructure, including a static site, monitoring, automation, and secure file sharing.
+A self-hosted Docker Compose stack for personal infrastructure, including the local fallback for a Cloudflare Pages-hosted static site, monitoring, automation, and secure file sharing.
 
 ## Architecture Overview
 
@@ -10,7 +10,7 @@ A self-hosted Docker Compose stack for personal infrastructure, including a stat
 ├─────────────────────────────────────────────────────────────────────┤
 │  ┌─────────────┐  ┌─────────────┐  ┌─────────────┐  ┌────────────┐  │
 │  │  grantSite  │  │  Portainer  │  │ Uptime Kuma │  │ PrivateBin │  │
-│  │   :8081     │  │   :9000     │  │   :3001     │  │   :8084    │  │
+│  │ :8081 backup│  │   :9000     │  │   :3001     │  │   :8084    │  │
 │  └─────────────┘  └─────────────┘  └─────────────┘  └────────────┘  │
 │  ┌─────────────┐  ┌─────────────────────────────────────────────┐   │
 │  │     n8n     │  │              cloudflared                    │   │
@@ -20,18 +20,21 @@ A self-hosted Docker Compose stack for personal infrastructure, including a stat
                               │
                               ▼
                     Cloudflare Zero Trust
-                    (HTTPS termination)
+                    (tunneled services)
+
+Public Grant site traffic is intended to terminate at Cloudflare Pages. The
+local `grantSite` container remains available as a localhost-only fallback.
 ```
 
 ## Services
 
 | Service       | Description                          | Internal Port | Default Host Port | Image                              |
 |---------------|--------------------------------------|---------------|-------------------|------------------------------------|
-| grantSite     | Static site server (Bun)             | 8080          | 8081              | Custom (bun-server/Dockerfile)     |
+| grantSite     | Static site fallback (Bun)           | 8080          | 8081              | Custom (bun-server/Dockerfile)     |
 | portainer     | Docker management UI                 | 9000          | 9000              | portainer/portainer-ce:2.39.1-alpine |
 | uptime-kuma   | Uptime monitoring dashboard          | 3001          | 3001              | louislam/uptime-kuma:2.2.1         |
 | privatebin    | Encrypted pastebin                   | 8080          | 8084              | privatebin/nginx-fpm-alpine:1.7.6  |
-| cloudflared   | Cloudflare Tunnel connector          | -             | -                 | cloudflare/cloudflared:2026.3.0    |
+| cloudflared   | Cloudflare Tunnel connector          | -             | -                 | cloudflare/cloudflared:2026.5.0    |
 | n8n           | Workflow automation                  | 5678          | 5678              | n8nio/n8n:1.123.31                 |
 
 ## Quick Start
@@ -155,6 +158,35 @@ docker compose -f docker-compose.dev.yaml logs -f grantSite
 # Rebuild after changes to the Bun server
 docker compose -f docker-compose.dev.yaml up -d --build grantSite
 ```
+
+### Cloudflare Pages Deployment
+
+The public Grant site is deployed to the Cloudflare Pages project `grant-site`.
+GitHub Actions builds `Grant/` and uploads `Grant/dist` when files under
+`Grant/` change on `main`.
+
+Required GitHub Actions secrets:
+
+| Secret                   | Description                                      |
+|--------------------------|--------------------------------------------------|
+| `CLOUDFLARE_ACCOUNT_ID`  | Cloudflare account ID for the Pages project      |
+| `CLOUDFLARE_API_TOKEN`   | Cloudflare API token with Pages write access     |
+
+Manual deploy from this machine:
+
+```bash
+cd Grant
+bun install --frozen-lockfile
+bun run build
+npx wrangler@4 pages deploy dist --project-name=grant-site --branch=main
+```
+
+Rollback options:
+
+- Re-run a prior GitHub Actions deployment from the Actions tab.
+- Deploy a previous commit locally with the same Wrangler command.
+- Temporarily route traffic back to the localhost `grantSite` tunnel while the
+  Pages deployment is repaired.
 
 ### Running Tests
 

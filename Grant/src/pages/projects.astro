@@ -37,7 +37,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <span class="new-badge">New</span>
       </div>
       <p class="text-sm text-gray-400 italic mb-4">Security-first homelab orchestration.</p>
-      <p class="mb-4">This stack currently hosts the very website you're reading. It's a production-ready environment running on local hardware, utilizing Astro for zero-JS static generation and Bun for blazing-fast builds. Cloudflare Tunnels provide zero-trust, localhost-only exposure. The architecture prioritizes minimal attack surface—there are no publicly exposed ports, and all traffic is authenticated through Cloudflare's network.</p>
+      <p class="mb-4">This stack maintains the local fallback for the website you're reading. The public site is built with Astro for zero-JS static generation and deployed to Cloudflare Pages, while the Docker/Bun path remains available on localhost as a backup. Cloudflare Tunnels still provide zero-trust, localhost-only exposure for the broader lab, keeping the public attack surface small.</p>
       <div class="flex flex-wrap gap-2 mb-4">
         <span class="tech-tag">Docker</span>
         <span class="tech-tag">Astro</span>
