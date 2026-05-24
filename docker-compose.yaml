@@ -68,14 +68,14 @@ services:
 
   # --- Cloudflare Tunnel Connector ---
   cloudflared:
-    image: cloudflare/cloudflared:2026.3.0
+    image: cloudflare/cloudflared:2026.5.0
     container_name: cloudflared-tunnel
     restart: unless-stopped
     command: tunnel --no-autoupdate run --token ${CLOUDFLARED_TUNNEL_TOKEN}
     # Note: A token is now the preferred method. You get the token from the
     # Cloudflare Zero Trust dashboard when you select your tunnel.
     healthcheck:
-      test: ["CMD", "cloudflared", "tunnel", "info"]
+      test: ["CMD", "cloudflared", "--version"]
       interval: 60s
       timeout: 10s
       retries: 3
