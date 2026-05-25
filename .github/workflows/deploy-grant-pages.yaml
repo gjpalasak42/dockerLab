@@ -31,6 +31,10 @@ jobs:
         working-directory: ./Grant
         run: bun install --frozen-lockfile
 
+      - name: Run Grant site tests
+        working-directory: ./Grant
+        run: bun run test
+
       - name: Build Astro site
         working-directory: ./Grant
         run: bun run build

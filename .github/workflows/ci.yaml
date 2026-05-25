@@ -37,6 +37,10 @@ jobs:
         working-directory: ./Grant
         run: bun install
 
+      - name: Run Grant site tests
+        working-directory: ./Grant
+        run: bun run test
+
       - name: Build Astro site
         working-directory: ./Grant
         run: bun run build
@@ -100,4 +104,3 @@ jobs:
         with:
           dockerfile: ./bun-server/Dockerfile
           failure-threshold: warning
-
