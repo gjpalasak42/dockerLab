@@ -67,8 +67,8 @@ needed escalation instead of guessing.
 2. Fast-forward from origin when clean: `git pull --ff-only`.
 3. Review release notes before changing pinned third-party image versions.
 4. Validate Compose before deployment: `docker compose config --quiet`.
-5. For `grantSite` code/content changes, run the Bun tests when available:
-   `cd bun-server && bun test`.
+5. For `grantSite` code/content changes, run both site and server tests when
+   available: `cd Grant && bun run test` and `cd bun-server && bun test`.
 6. Rebuild or restart only the services needed for the change.
 7. Verify health locally and, when appropriate, through the public Cloudflare
    route.

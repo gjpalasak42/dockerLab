@@ -70,6 +70,14 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         </g>
       </a>
 
+      <a href="https://rocks.palasak.com" target="_blank" rel="noopener noreferrer">
+        <g class="lab-node">
+          <rect x="228" y="190" width="200" height="84" />
+          <text x="250" y="226" class="lab-node__title">ROCK ATLAS</text>
+          <text x="250" y="254" class="lab-node__meta">geology app</text>
+        </g>
+      </a>
+
       <a href="/projects">
         <g class="lab-node">
           <rect x="380" y="300" width="184" height="84" />
@@ -79,15 +87,20 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       </a>
 
       <g class="lab-map__lines">
-        <path d="M244 113 H330 V342 H380" />
-        <path d="M280 328 H350 V153 H408" />
+        <path d="M244 113 H328 V190" />
+        <path d="M408 153 H328 V190" />
+        <path d="M328 274 V342 H380" />
+        <path d="M228 232 H188 V286" />
       </g>
 
       <g class="lab-map__ports" aria-hidden="true">
         <circle cx="244" cy="113" r="5" />
-        <circle cx="380" cy="342" r="5" />
-        <circle cx="280" cy="328" r="5" />
         <circle cx="408" cy="153" r="5" />
+        <circle cx="328" cy="190" r="5" />
+        <circle cx="328" cy="274" r="5" />
+        <circle cx="380" cy="342" r="5" />
+        <circle cx="188" cy="286" r="5" />
+        <circle cx="228" cy="232" r="5" />
       </g>
     </svg>
   </section>
@@ -107,6 +120,10 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <a href="https://intel.palasak.com" target="_blank" rel="noopener noreferrer" class="home-row group">
           <span>threat-tracker</span>
           <em>A threat intelligence UI experiment.</em>
+        </a>
+        <a href="https://rocks.palasak.com" target="_blank" rel="noopener noreferrer" class="home-row group">
+          <span>Rock Atlas</span>
+          <em>An interactive geology explorer with searchable specimen data and field notes.</em>
         </a>
         <a href="/about" class="home-row group">
           <span>CPTS / PNPT</span>
