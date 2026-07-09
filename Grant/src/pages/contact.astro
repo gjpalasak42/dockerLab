@@ -1,34 +1,80 @@
 ---
-/**
- * contact.astro - Contact page
- * 
- * ZERO-JS: This page ships no JavaScript - pure static content.
- */
 import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
 <BaseLayout title="Grant Palasak | Contact" description="Contact Grant Palasak - Open to connecting with peers, mentors, and fellow enthusiasts in the cybersecurity community.">
-  <div class="flex items-center justify-center h-full">
-    <div class="text-center bg-gray-800/50 border border-gray-700 rounded-lg p-8 md:p-12">
-      <h1 class="text-3xl font-bold text-white mb-4 font-mono">Get In Touch</h1>
-      <p class="text-gray-400 mb-6 max-w-md">
-        I'm always open to connecting with peers, mentors, and fellow enthusiasts in the cybersecurity community. The best way to reach me is through LinkedIn.
-      </p>
-      <div class="space-y-4">
-        <a 
-          href="https://www.linkedin.com/in/grant-palasak-605b491aa/" 
-          target="_blank" 
-          rel="noopener noreferrer" 
-          class="inline-block bg-cyan-500 text-gray-900 font-bold py-3 px-8 rounded-lg hover:bg-cyan-400 transition-colors duration-300 font-mono"
-        >
-          [ LinkedIn ]
-        </a>
-        <p class="text-sm text-gray-500">
-          Professional Inquiries: <a href="mailto:grant@palasak.com" class="text-cyan-400 hover:underline">grant@palasak.com</a>
-          <br>
-          Site Issues: <a href="mailto:support@palasak.com" class="text-cyan-400 hover:underline">support@palasak.com</a>
-        </p>
-      </div>
-    </div>
+  <div class="console-page contact-page">
+    <section class="reveal">
+      <p class="console-kicker mb-5">Contact</p>
+      <h1 class="console-page-heading">Let’s connect.</h1>
+      <p class="console-intro mt-7">I’m always open to connecting with peers, mentors, and fellow enthusiasts in the cybersecurity community.</p>
+    </section>
+
+    <section class="profile-links mt-20 border-y console-rule reveal reveal-delay" aria-label="Public profiles">
+      <a href="https://www.linkedin.com/in/grant-palasak-605b491aa/" target="_blank" rel="noopener noreferrer" class="contact-link">
+        <span>LinkedIn</span>
+        <small>Professional profile ↗</small>
+      </a>
+      <a href="https://app.hackthebox.com/users/963092" target="_blank" rel="noopener noreferrer" class="contact-link">
+        <span>Hack The Box</span>
+        <small>Training profile ↗</small>
+      </a>
+    </section>
+
+    <section class="mt-12 grid gap-8 text-sm text-[#989d91] md:grid-cols-2 reveal reveal-delay-2">
+      <div><p class="console-kicker mb-3">Professional inquiries</p><a href="mailto:grant@palasak.com" class="quiet-link">grant@palasak.com</a></div>
+      <div><p class="console-kicker mb-3">Site issues</p><a href="mailto:support@palasak.com" class="quiet-link">support@palasak.com</a></div>
+    </section>
   </div>
 </BaseLayout>
+
+<style>
+  .contact-page {
+    padding-top: 5rem;
+  }
+
+  .contact-link {
+    display: grid;
+    gap: 1rem;
+    align-items: baseline;
+    padding: 2rem 0;
+    color: #f4eddf;
+    font-size: clamp(2.6rem, 7vw, 5.75rem);
+    font-weight: 600;
+    letter-spacing: -0.06em;
+    line-height: 0.9;
+    text-decoration: none;
+    transition: color 180ms ease, padding 180ms ease;
+  }
+
+  .contact-link + .contact-link {
+    border-top: 1px solid #2b2f2b;
+  }
+
+  .contact-link small {
+    color: #8f948b;
+    font-family: "Fira Code", monospace;
+    font-size: 0.7rem;
+    font-weight: 400;
+    letter-spacing: 0.12em;
+    line-height: 1.4;
+    text-transform: uppercase;
+    transition: color 180ms ease;
+  }
+
+  .contact-link:hover {
+    color: #c9a66b;
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+  }
+
+  .contact-link:hover small {
+    color: #cfc7b8;
+  }
+
+  @media (min-width: 768px) {
+    .contact-link {
+      grid-template-columns: minmax(0, 1fr) auto;
+    }
+  }
+</style>

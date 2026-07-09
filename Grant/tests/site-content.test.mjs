@@ -34,6 +34,22 @@ test('projects page marks only Rock Atlas as new', async () => {
   assert.ok(rockAtlasBadge < nextSection);
 });
 
+test('contact page links to the canonical Hack The Box profile', async () => {
+  const contact = await source('contact.astro');
+
+  assert.match(contact, /https:\/\/app\.hackthebox\.com\/users\/963092/);
+  assert.doesNotMatch(contact, /profile-top-tab|ownership-period|profile-bottom-tab/);
+});
+
+test('site navigation uses the explicit homepage file for local previews', async () => {
+  const layout = await readFile(new URL('../src/layouts/BaseLayout.astro', import.meta.url), 'utf8');
+  const notFound = await source('404.astro');
+
+  assert.match(layout, /href="\/index\.html"/);
+  assert.doesNotMatch(layout, /href="\/"/);
+  assert.match(notFound, /href="\/index\.html"/);
+});
+
 test('deploy workflow runs Grant content tests before building', async () => {
   const workflow = await repoFile('.github/workflows/deploy-grant-pages.yaml');
   const testStep = workflow.indexOf('run: bun run test');

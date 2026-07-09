@@ -33,6 +33,7 @@ describe("Bun Static Server", () => {
   beforeAll(async () => {
     mkdirSync(PUBLIC_DIR, { recursive: true });
     mkdirSync(join(PUBLIC_DIR, "folder"), { recursive: true });
+    writeFileSync(join(PUBLIC_DIR, "index.html"), "<h1>Home</h1>");
     writeFileSync(join(PUBLIC_DIR, "hello.txt"), "Hello Bun!");
     writeFileSync(join(PUBLIC_DIR, ".secret"), "shh");
     writeFileSync(join(PUBLIC_DIR, "folder", ".env"), "nested secret");
@@ -54,6 +55,16 @@ describe("Bun Static Server", () => {
 
     expect(res.status).toBe(200);
     expect(await res.text()).toBe("Hello Bun!");
+  });
+
+  test("serves index.html directly for the root route", async () => {
+    const res = await fetch(`http://127.0.0.1:${server.port}/`, {
+      redirect: "manual",
+    });
+
+    expect(res.status).toBe(200);
+    expect(res.headers.get("location")).toBeNull();
+    expect(await res.text()).toBe("<h1>Home</h1>");
   });
 
   test("returns 404 for dotfiles", async () => {

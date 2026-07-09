@@ -1,134 +1,97 @@
 ---
-// Projects & Competitions page - ZERO-JS, CSS-only animations for badges
 import BaseLayout from '../layouts/BaseLayout.astro';
+
+const projects = [
+  {
+    number: '01',
+    name: 'projectKepler',
+    status: 'Active tooling',
+    description: 'Burp Suite tooling that reduces documentation debt and keeps collaborative penetration testing handoffs clear.',
+    stack: 'Java 17 · Burp Extender API · JSON Persistence',
+    href: 'https://github.com/gjpalasak42/projectKepler',
+  },
+  {
+    number: '02',
+    name: 'dockerLab',
+    status: 'Live infrastructure',
+    description: 'Security-first homelab orchestration. The public site is built with Astro for zero-JS static generation and deployed to Cloudflare Pages, while the Docker/Bun path remains available on localhost as a backup.',
+    stack: 'Docker · Astro · Bun · Cloudflare Zero Trust',
+    href: 'https://github.com/gjpalasak42/dockerLab',
+  },
+  {
+    number: '03',
+    name: 'threat-tracker',
+    status: 'UI experiment',
+    description: 'A threat intelligence UI experiment that pairs OSINT lookups with real-time data streaming and schema management.',
+    stack: 'Next.js 16 · TypeScript · Drizzle ORM',
+    href: 'https://intel.palasak.com',
+  },
+];
 ---
 
-<BaseLayout 
-  title="Grant Palasak | Projects" 
-  description="Portfolio of security-focused projects including Burp Suite extensions, homelab infrastructure, and UI/UX experiments by Grant Palasak."
->
-  <h1 class="text-3xl font-bold text-white mb-2 font-mono">Projects</h1>
-  <p class="text-gray-400 mb-10">A curated selection of work reflecting my focus on security tooling, infrastructure design, and modern development practices.</p>
+<BaseLayout title="Grant Palasak | Projects" description="Portfolio of security-focused projects including Burp Suite extensions, homelab infrastructure, and UI/UX experiments by Grant Palasak.">
+  <div class="console-page">
+    <section class="reveal">
+      <p class="console-kicker mb-5">Selected work</p>
+      <h1 class="console-page-heading">Projects built for<br>real use.</h1>
+      <p class="console-intro mt-7">Security tools, infrastructure, and interface experiments—with the context needed to understand the work, not just the stack.</p>
+    </section>
 
-  <div class="space-y-10">
+    <section class="mt-16 reveal reveal-delay" aria-label="Projects">
+      <div class="mb-4 grid gap-3 border-b console-rule pb-4 font-mono text-[0.68rem] uppercase tracking-[0.14em] text-[#8f948b] md:grid-cols-[4rem_minmax(10rem,0.7fr)_minmax(0,1.4fr)_auto] md:gap-6">
+        <span>Ref</span><span>Project</span><span>Purpose</span><span>State</span>
+      </div>
+      <div class="console-list">
+        {projects.map((project) => (
+          <a href={project.href} target="_blank" rel="noopener noreferrer" class="console-row">
+            <span class="console-row__index">{project.number}</span>
+            <span class="console-row__title">{project.name}</span>
+            <span class="console-row__description">{project.description}<small>{project.stack}</small></span>
+            <span class="console-status">{project.status}</span>
+          </a>
+        ))}
 
-    <!-- Project Kepler -->
-    <div class="project-card bg-gray-800/50 border border-gray-700 rounded-lg p-6">
-      <div class="flex flex-wrap items-center gap-3 mb-3">
-        <h2 class="text-2xl font-semibold text-cyan-400 font-mono">projectKepler</h2>
-        <span class="status-badge status-active">Active Tooling</span>
+        <!-- Rock Atlas -->
+        <a href="https://rocks.palasak.com" target="_blank" rel="noopener noreferrer" class="console-row">
+          <span class="console-row__index">04</span>
+          <span class="console-row__title">Rock Atlas</span>
+          <span class="console-row__description">An interactive geology explorer with searchable specimen data, field notes, confidence scoring, favorites, and a lightweight quiz mode.<small>HTML · CSS · JavaScript · nginx · Docker</small></span>
+          <span class="console-status"><span class="new-badge">New</span> Live project</span>
+        </a>
       </div>
-      <p class="text-sm text-gray-400 italic mb-4">Solving documentation debt in collaborative penetration testing.</p>
-      <p class="mb-4">Built to facilitate seamless handoffs between testers. projectKepler allows users to tag endpoints as vulnerable, safe, or "needs investigation" directly within Burp Suite's proxy. The goal was to prevent redundant testing and create a shared understanding of what's been covered—a common pain point in team-based engagements.</p>
-      <div class="flex flex-wrap gap-2 mb-4">
-        <span class="tech-tag">Java 17</span>
-        <span class="tech-tag">Burp Extender API</span>
-        <span class="tech-tag">JSON Persistence</span>
-      </div>
-      <a href="https://github.com/gjpalasak42/projectKepler" target="_blank" rel="noopener noreferrer" class="inline-block bg-cyan-900/50 border border-cyan-500 text-cyan-400 font-semibold py-2 px-4 rounded hover:bg-cyan-800/50 transition duration-300 text-sm">View on GitHub</a>
-    </div>
-
-    <!-- dockerLab -->
-    <div class="project-card bg-gray-800/50 border border-gray-700 rounded-lg p-6">
-      <div class="flex flex-wrap items-center gap-3 mb-3">
-        <h2 class="text-2xl font-semibold text-cyan-400 font-mono">dockerLab</h2>
-        <span class="status-badge status-live">Live Infrastructure</span>
-      </div>
-      <p class="text-sm text-gray-400 italic mb-4">Security-first homelab orchestration.</p>
-      <p class="mb-4">This stack maintains the local fallback for the website you're reading. The public site is built with Astro for zero-JS static generation and deployed to Cloudflare Pages, while the Docker/Bun path remains available on localhost as a backup. Cloudflare Tunnels still provide zero-trust, localhost-only exposure for the broader lab, keeping the public attack surface small.</p>
-      <div class="flex flex-wrap gap-2 mb-4">
-        <span class="tech-tag">Docker</span>
-        <span class="tech-tag">Astro</span>
-        <span class="tech-tag">Bun</span>
-        <span class="tech-tag">Tailwind CSS</span>
-        <span class="tech-tag">Cloudflare Zero Trust</span>
-      </div>
-      <a href="https://github.com/gjpalasak42/dockerLab" target="_blank" rel="noopener noreferrer" class="inline-block bg-cyan-900/50 border border-cyan-500 text-cyan-400 font-semibold py-2 px-4 rounded hover:bg-cyan-800/50 transition duration-300 text-sm">View on GitHub</a>
-    </div>
-
-    <!-- threat-tracker -->
-    <div class="project-card bg-gray-800/50 border border-gray-700 rounded-lg p-6">
-      <div class="flex flex-wrap items-center gap-3 mb-3">
-        <h2 class="text-2xl font-semibold text-cyan-400 font-mono">threat-tracker</h2>
-        <span class="status-badge status-experiment">UI/UX Experiment</span>
-      </div>
-      <p class="text-sm text-gray-400 italic mb-4">A UI/UX experiment in threat intelligence visualization.</p>
-      <p class="mb-4">A proof-of-concept platform built to explore Next.js 16 and Tailwind CSS 4. While it functions as a simple OSINT lookup tool for AbuseIPDB and AlienVault OTX, its primary purpose was an exploration of modern frontend architecture—specifically, real-time data streaming with Server-Sent Events (SSE) and schema management with Drizzle ORM.</p>
-      <div class="flex flex-wrap gap-2 mb-4">
-        <span class="tech-tag">Next.js 16</span>
-        <span class="tech-tag">TypeScript</span>
-        <span class="tech-tag">Drizzle ORM</span>
-        <span class="tech-tag">Tailwind CSS 4</span>
-      </div>
-      <div class="flex flex-col gap-3">
-        <div class="flex flex-wrap gap-3">
-          <a href="https://github.com/gjpalasak42/threat-tracker" target="_blank" rel="noopener noreferrer" class="inline-block bg-cyan-900/50 border border-cyan-500 text-cyan-400 font-semibold py-2 px-4 rounded hover:bg-cyan-800/50 transition duration-300 text-sm">View on GitHub</a>
-          <a href="https://intel.palasak.com" target="_blank" rel="noopener noreferrer" class="inline-block bg-cyan-900/50 border border-cyan-500 text-cyan-400 font-semibold py-2 px-4 rounded hover:bg-cyan-800/50 transition duration-300 text-sm">View Live</a>
-        </div>
-        <p class="text-xs text-gray-500 italic">Note: You can create your own account to use the system today!</p>
-      </div>
-    </div>
-
-    <!-- Rock Atlas -->
-    <div class="project-card bg-gray-800/50 border border-gray-700 rounded-lg p-6">
-      <div class="flex flex-wrap items-center gap-3 mb-3">
-        <h2 class="text-2xl font-semibold text-cyan-400 font-mono">Rock Atlas</h2>
-        <span class="status-badge status-live">Live Educational App</span>
-        <span class="new-badge">New</span>
-      </div>
-      <p class="text-sm text-gray-400 italic mb-4">An interactive geology explorer for rocks and minerals.</p>
-      <p class="mb-4">Started as a GEOL 1040 study helper and rebuilt as a polished static portfolio app. Rock Atlas combines searchable specimen data, field notes, confidence scoring, favorites, and a lightweight quiz mode to show interaction design, educational data modeling, and Docker-friendly static deployment.</p>
-      <div class="flex flex-wrap gap-2 mb-4">
-        <span class="tech-tag">HTML</span>
-        <span class="tech-tag">CSS</span>
-        <span class="tech-tag">JavaScript</span>
-        <span class="tech-tag">nginx</span>
-        <span class="tech-tag">Docker</span>
-        <span class="tech-tag">Cloudflare Tunnel</span>
-      </div>
-      <a href="https://rocks.palasak.com" target="_blank" rel="noopener noreferrer" class="inline-block bg-cyan-900/50 border border-cyan-500 text-cyan-400 font-semibold py-2 px-4 rounded hover:bg-cyan-800/50 transition duration-300 text-sm">View Live</a>
-    </div>
+    </section>
 
     <!-- Certifications -->
-    <div class="project-card bg-gray-800/50 border border-gray-700 rounded-lg p-6">
-      <h2 class="text-2xl font-semibold text-cyan-400 mb-2 font-mono">Certifications</h2>
-      <p class="text-sm text-gray-400 mb-4">Professional certifications currently in progress.</p>
-      <div class="space-y-3">
-        <div class="bg-gray-900/50 rounded p-3">
-          <p class="font-bold text-white">Hack The Box - Certified Penetration Testing Specialist (CPTS)</p>
-          <p class="text-sm text-yellow-400">In Progress</p>
-        </div>
-        <div class="bg-gray-900/50 rounded p-3">
-          <p class="font-bold text-white">TCM Security - Practical Network Penetration Tester (PNPT)</p>
-          <p class="text-sm text-yellow-400">Report Submitted - Results Pending</p>
+    <section class="mt-24 grid gap-8 border-t console-rule pt-10 md:grid-cols-[0.35fr_1fr]">
+      <p class="console-kicker">Training</p>
+      <div>
+        <h2 class="text-3xl font-semibold tracking-[-0.03em] text-[#f4eddf]">Practical security training.</h2>
+        <div class="console-list mt-8">
+          <div class="console-row"><span class="console-row__index">01</span><span class="console-row__title">Hack The Box CPTS</span><span class="console-row__description">Certified Penetration Testing Specialist.</span><span class="console-status">In progress</span></div>
+          <div class="console-row"><span class="console-row__index">02</span><span class="console-row__title">TCM Security PNPT</span><span class="console-row__description">Practical Network Penetration Tester.</span><span class="console-status">Report submitted</span></div>
+          <div class="console-row"><span class="console-row__index">03</span><span class="console-row__title">CPTC</span><span class="console-row__description">Former Team Captain for Tennessee Tech's CyberEagles. 1st Place Central Region (2024); 3rd Place Central Region (2025).</span><span class="console-status">Competition</span></div>
         </div>
       </div>
-    </div>
+    </section>
 
-    <!-- CPTC -->
-    <div class="project-card bg-gray-800/50 border border-gray-700 rounded-lg p-6">
-      <h2 class="text-2xl font-semibold text-cyan-400 mb-2 font-mono">Collegiate Penetration Testing Competition (CPTC)</h2>
-      <p class="text-sm text-gray-400 mb-4">Former Team Captain for Tennessee Tech's CyberEagles</p>
-      <p class="mb-4">As team captain, I led strategy, technical execution, and client-facing presentations in a simulated, real-world penetration testing engagement against live enterprise networks. This competition was a premier event for developing and demonstrating practical offensive security skills.</p>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-center">
-        <div class="bg-gray-900/50 rounded p-3">
-          <p class="font-bold text-white">CPTC 10 (2024)</p>
-          <p class="text-lg text-green-400">1st Place - Central Region</p>
-        </div>
-        <div class="bg-gray-900/50 rounded p-3">
-          <p class="font-bold text-white">CPTC 11 (2025)</p>
-          <p class="text-lg text-cyan-400">3rd Place - Central Region</p>
-        </div>
-      </div>
-    </div>
-
+    <section class="mt-20 border-t console-rule pt-8">
+      <p class="console-kicker mb-3">Development workflow</p>
+      <p class="console-intro">These projects are developed with an agentic workflow, primarily using Codex for planning, implementation, review, and iteration. I keep the technical decisions, security judgment, and final review in human hands.</p>
+    </section>
   </div>
-
-  <!-- Workflow Section -->
-  <section class="mt-16 pt-8 border-t border-gray-700/50">
-    <h2 class="text-xl font-semibold text-white mb-4 font-mono">// Development Workflow</h2>
-    <p class="text-gray-400 text-sm leading-relaxed">
-      These projects were developed with an agentic workflow, primarily using Codex for planning, implementation, review, and iteration. I use these tools as a development partner while keeping the technical decisions, security judgment, and final review in human hands.
-    </p>
-  </section>
 </BaseLayout>
+
+<style>
+  .console-row small {
+    display: block;
+    margin-top: 0.55rem;
+    color: #74796f;
+    font-family: "Fira Code", monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.04em;
+  }
+
+  .new-badge {
+    color: #f4eddf;
+  }
+</style>
