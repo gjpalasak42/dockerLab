@@ -11,6 +11,13 @@ export function createStaticFetchHandler(publicDir = "public") {
       return new Response("Not Found", { status: 404 });
     }
 
+    // Resolve the homepage explicitly instead of relying on directory-index
+    // behavior. This also gives local navigation a stable /index.html target.
+    if (url.pathname === "/") {
+      const indexUrl = new URL("/index.html", url);
+      return servePublic(new Request(indexUrl, req));
+    }
+
     // Serve static files from public directory
     return servePublic(req);
   };

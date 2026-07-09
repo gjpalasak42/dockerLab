@@ -25,14 +25,14 @@ const { title, description = "Grant Palasak - Junior Penetration Testing Enginee
 </head>
 <body class="bg-[#0f1110] text-[#d8d2c4] font-sans antialiased">
   <div class="site-shell flex flex-col min-h-screen">
-    <header class="max-w-6xl mx-auto w-full px-5 py-5 md:px-8 md:py-7">
+    <header class="site-header max-w-6xl mx-auto w-full px-5 py-5 md:px-8 md:py-7">
       <slot name="nav">
         <!-- Default nav can be overridden per-page if needed -->
         <nav class="flex flex-col gap-4 border-b border-[#2b2f2b] pb-5 sm:flex-row sm:items-center sm:justify-between">
-          <a href="/" class="text-sm font-semibold uppercase tracking-[0.22em] text-[#f2eadc]">Grant Palasak</a>
+          <a href="/index.html" class="text-sm font-semibold uppercase tracking-[0.22em] text-[#f2eadc]">Grant Palasak</a>
           <ul class="flex flex-wrap items-center gap-4 text-xs uppercase tracking-[0.18em] text-[#8f948b] md:gap-6">
             <li>
-              <a href="/" class:list={["nav-link", Astro.url.pathname === "/" ? "active" : ""]}>
+              <a href="/index.html" class:list={["nav-link", Astro.url.pathname === "/" || Astro.url.pathname === "/index.html" ? "active" : ""]}>
                 Home
               </a>
             </li>
@@ -61,7 +61,7 @@ const { title, description = "Grant Palasak - Junior Penetration Testing Enginee
       </slot>
     </header>
 
-    <main class="flex-grow max-w-6xl mx-auto w-full px-5 py-10 md:px-8 md:py-16">
+    <main class="flex-grow w-full">
       <slot />
     </main>
 
@@ -116,6 +116,20 @@ const { title, description = "Grant Palasak - Junior Penetration Testing Enginee
 
   .nav-link.active {
     color: #c9a66b;
+  }
+
+  .site-header nav {
+    position: relative;
+  }
+
+  .site-header nav::after {
+    content: "";
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 5.5rem;
+    height: 1px;
+    background: #c9a66b;
   }
 
   .eyebrow {
@@ -173,6 +187,111 @@ const { title, description = "Grant Palasak - Junior Penetration Testing Enginee
     animation-delay: 120ms;
   }
 
+  .reveal-delay-2 {
+    animation-delay: 220ms;
+  }
+
+  .console-page {
+    max-width: 72rem;
+    margin: 0 auto;
+    padding: 2.5rem 1.25rem 4rem;
+  }
+
+  .console-kicker {
+    color: #a8a395;
+    font-family: "Fira Code", monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+
+  .console-page-heading {
+    margin: 0;
+    color: #f4eddf;
+    font-size: clamp(2.5rem, 7vw, 5.5rem);
+    font-weight: 600;
+    letter-spacing: -0.045em;
+    line-height: 0.94;
+  }
+
+  .console-intro {
+    max-width: 43rem;
+    color: #989d91;
+    font-size: 1.05rem;
+    line-height: 1.8;
+  }
+
+  .console-link {
+    color: #f4eddf;
+    font-family: "Fira Code", monospace;
+    font-size: 0.76rem;
+    letter-spacing: 0.12em;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: color 180ms ease;
+  }
+
+  .console-link::after {
+    content: " →";
+    color: #c9a66b;
+  }
+
+  .console-link:hover {
+    color: #c9a66b;
+  }
+
+  .console-rule {
+    border-color: #2b2f2b;
+  }
+
+  .console-row {
+    display: grid;
+    gap: 0.75rem;
+    padding: 1.4rem 0;
+    border-top: 1px solid #2b2f2b;
+    color: #f4eddf;
+    text-decoration: none;
+    transition: background 180ms ease, padding 180ms ease;
+  }
+
+  .console-row:hover {
+    background: rgba(201, 166, 107, 0.045);
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+  }
+
+  .console-row__index,
+  .console-row__meta {
+    color: #8f948b;
+    font-family: "Fira Code", monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .console-row__title {
+    font-family: "Fira Code", monospace;
+    font-size: 1rem;
+    font-weight: 500;
+  }
+
+  .console-row__description {
+    color: #989d91;
+    line-height: 1.7;
+  }
+
+  .console-status {
+    color: #c9a66b;
+    font-family: "Fira Code", monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .console-list {
+    border-bottom: 1px solid #2b2f2b;
+  }
+
   @keyframes reveal-up {
     from {
       opacity: 0;
@@ -202,6 +321,22 @@ const { title, description = "Grant Palasak - Junior Penetration Testing Enginee
       background:
         radial-gradient(circle at top left, rgba(181, 146, 91, 0.11), transparent 24rem),
         #0f1110;
+    }
+
+    .console-page {
+      padding-top: 2rem;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .console-page {
+      padding: 4rem 2rem 6rem;
+    }
+
+    .console-row {
+      grid-template-columns: 4rem minmax(10rem, 0.7fr) minmax(0, 1.4fr) auto;
+      align-items: baseline;
+      gap: 1.5rem;
     }
   }
 </style>

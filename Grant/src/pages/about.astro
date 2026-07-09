@@ -1,53 +1,30 @@
 ---
-/**
- * about.astro - About page
- * 
- * ZERO-JS: This page ships no JavaScript - pure static content.
- */
 import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
 <BaseLayout title="Grant Palasak | About" description="About Grant Palasak - Junior Penetration Testing Engineer with a B.S. in Computer Science and a concentration in Information Assurance and Cybersecurity.">
-  <section class="mb-12">
-    <h1 class="text-3xl font-bold text-white mb-4 font-mono">About Me</h1>
-    <p class="text-base leading-relaxed">
-      I am a Junior Penetration Testing Engineer with a Bachelor of Science in Computer Science from Tennessee Technological University, where I concentrated in Information Assurance and Cybersecurity. My work and interests focus on offensive security methodology, web and network assessments, tool development, and practical infrastructure.
-    </p>
-    <p class="text-base leading-relaxed mt-4 bg-gray-800/50 border border-cyan-500/20 rounded-lg p-4">
-      <strong class="text-cyan-400">Status:</strong> I am not currently seeking new employment opportunities, but I am always open to connecting with professionals in the tech and security space.
-    </p>
-  </section>
-  
-  <section class="mb-12">
-    <h2 class="text-2xl font-bold text-white border-b-2 border-cyan-500/30 pb-2 mb-6 font-mono">Technical Skills</h2>
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-      <div class="bg-gray-800/50 border border-gray-700 rounded-lg p-4">
-        <h3 class="font-bold text-cyan-400 mb-2 font-mono">Offensive Security</h3>
-        <ul class="list-disc list-inside text-sm space-y-1">
-          <li>Web & Network Assessments</li>
-          <li>Basic Mobile App Testing (Android)</li>
-          <li>GenAI System Evaluations</li>
-          <li>Custom Tool Development</li>
-        </ul>
+  <div class="console-page">
+    <section class="reveal">
+      <p class="console-kicker mb-5">Profile</p>
+      <h1 class="console-page-heading">Security work with<br>practical range.</h1>
+      <p class="console-intro mt-7">I am a Junior Penetration Testing Engineer with a Bachelor of Science in Computer Science from Tennessee Technological University, where I concentrated in Information Assurance and Cybersecurity. My work focuses on offensive security methodology, web and network assessments, tool development, and practical infrastructure.</p>
+    </section>
+
+    <section class="mt-20 grid gap-8 border-t console-rule pt-10 md:grid-cols-[0.35fr_1fr] reveal reveal-delay">
+      <p class="console-kicker">Availability</p>
+      <p class="max-w-3xl text-2xl leading-snug text-[#f0e6d4]">Not currently seeking new employment opportunities. Always open to connecting with people doing thoughtful work in technology and security.</p>
+    </section>
+
+    <section class="mt-20 reveal reveal-delay-2">
+      <div class="mb-8">
+        <p class="console-kicker mb-3">Capabilities</p>
+        <h2 class="text-3xl font-semibold tracking-[-0.03em] text-[#f4eddf]">Technical focus.</h2>
       </div>
-      <div class="bg-gray-800/50 border border-gray-700 rounded-lg p-4">
-        <h3 class="font-bold text-cyan-400 mb-2 font-mono">Languages & Tech</h3>
-        <ul class="list-disc list-inside text-sm space-y-1">
-          <li>Python, Java, C++, Bash</li>
-          <li>Burp Suite API</li>
-          <li>React Native</li>
-          <li>Power Automate</li>
-        </ul>
+      <div class="console-list">
+        <div class="console-row"><span class="console-row__index">01</span><span class="console-row__title">Offensive security</span><span class="console-row__description">Web and network assessments, basic Android testing, GenAI system evaluations, and custom tool development.</span><span class="console-status">Assess</span></div>
+        <div class="console-row"><span class="console-row__index">02</span><span class="console-row__title">Languages & tools</span><span class="console-row__description">Python, Java, C++, Bash, Burp Suite API, React Native, and Power Automate.</span><span class="console-status">Build</span></div>
+        <div class="console-row"><span class="console-row__index">03</span><span class="console-row__title">Development & ops</span><span class="console-row__description">Software development, DevSecOps principles, Agile/Scrum workflows, Docker, and containerization.</span><span class="console-status">Operate</span></div>
       </div>
-      <div class="bg-gray-800/50 border border-gray-700 rounded-lg p-4">
-        <h3 class="font-bold text-cyan-400 mb-2 font-mono">Dev & Ops</h3>
-        <ul class="list-disc list-inside text-sm space-y-1">
-          <li>Software Development</li>
-          <li>DevSecOps Principles</li>
-          <li>Agile/Scrum Frameworks</li>
-          <li>Docker & Containerization</li>
-        </ul>
-      </div>
-    </div>
-  </section>
+    </section>
+  </div>
 </BaseLayout>

@@ -4,244 +4,160 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
 <BaseLayout title="Grant Palasak | Home">
-  <section class="grid min-h-[64svh] items-center gap-14 lg:grid-cols-[1.05fr_0.95fr]">
-    <div class="reveal max-w-3xl">
-      <p class="eyebrow mb-5">Junior Penetration Testing Engineer</p>
-      <h1 class="max-w-4xl text-5xl font-semibold leading-[0.96] tracking-[-0.03em] text-[#f4eddf] md:text-7xl lg:text-8xl">
-        Grant Palasak
-      </h1>
-      <p class="mt-7 max-w-2xl text-2xl leading-snug text-[#cfc7b8] md:text-3xl">
-        Security tooling, homelab infrastructure, and practical offensive security work.
-      </p>
-      <p class="mt-6 max-w-2xl text-base leading-8 text-[#989d91] md:text-lg">
-        I hold a Bachelor of Science in Computer Science from Tennessee Technological University, with a concentration in Information Assurance and Cybersecurity. This site collects projects, experiments, and ways to connect.
-      </p>
-      <div class="mt-9 flex flex-wrap gap-4 text-sm font-medium">
-        <a href="/projects" class="rounded-full bg-[#d7b46f] px-5 py-3 text-[#14140f] transition hover:bg-[#f0ce88]">
-          View projects
-        </a>
-        <a href="https://github.com/gjpalasak42" target="_blank" rel="noopener noreferrer" class="rounded-full border border-[#3b403a] px-5 py-3 text-[#f4eddf] transition hover:border-[#c9a66b]">
-          GitHub
-        </a>
-        <a href="https://www.linkedin.com/in/grant-palasak-605b491aa/" target="_blank" rel="noopener noreferrer" class="rounded-full border border-[#3b403a] px-5 py-3 text-[#f4eddf] transition hover:border-[#c9a66b]">
-          LinkedIn
-        </a>
+  <section class="hero-console">
+    <div class="hero-console__inner">
+      <div class="reveal">
+        <p class="console-kicker mb-5">Junior Penetration Testing Engineer</p>
+        <h1>Grant<br>Palasak</h1>
+        <p class="hero-console__summary">Tools and systems that hold up in practice.</p>
+        <p class="hero-console__detail">Security tooling, homelab infrastructure, and practical offensive security work.</p>
+        <a href="/projects" class="console-link mt-8 inline-block">Explore selected work</a>
       </div>
-    </div>
-
-    <svg class="lab-map reveal reveal-delay" viewBox="0 0 640 440" role="img" aria-labelledby="lab-map-title">
-      <title id="lab-map-title">Public lab map</title>
-      <defs>
-        <pattern id="lab-grid" width="48" height="48" patternUnits="userSpaceOnUse">
-          <path d="M 48 0 L 0 0 0 48" fill="none" stroke="rgba(255,255,255,0.035)" stroke-width="1" />
-        </pattern>
-        <radialGradient id="grid-fade" cx="50%" cy="50%" r="72%">
-          <stop offset="0%" stop-color="white" stop-opacity="1" />
-          <stop offset="100%" stop-color="white" stop-opacity="0" />
-        </radialGradient>
-        <mask id="grid-mask">
-          <rect width="640" height="440" fill="url(#grid-fade)" />
-        </mask>
-      </defs>
-      <rect class="lab-map__frame" x="0.5" y="0.5" width="639" height="439" />
-      <rect width="640" height="440" fill="url(#lab-grid)" mask="url(#grid-mask)" />
-
-      <a href="/">
-        <g class="lab-node">
-          <rect x="64" y="72" width="180" height="82" />
-          <text x="86" y="105" class="lab-node__title">SITE</text>
-          <text x="86" y="132" class="lab-node__meta">personal site</text>
-        </g>
-      </a>
-
-      <a href="https://github.com/gjpalasak42" target="_blank" rel="noopener noreferrer">
-        <g class="lab-node">
-          <rect x="408" y="112" width="168" height="82" />
-          <text x="430" y="145" class="lab-node__title">GITHUB</text>
-          <text x="430" y="172" class="lab-node__meta">tools</text>
-        </g>
-      </a>
-
-      <a href="https://intel.palasak.com" target="_blank" rel="noopener noreferrer">
-        <g class="lab-node">
-          <rect x="96" y="286" width="184" height="84" />
-          <text x="118" y="322" class="lab-node__title">THREAT DB</text>
-          <text x="118" y="350" class="lab-node__meta">osint</text>
-        </g>
-      </a>
-
-      <a href="https://rocks.palasak.com" target="_blank" rel="noopener noreferrer">
-        <g class="lab-node">
-          <rect x="228" y="190" width="200" height="84" />
-          <text x="250" y="226" class="lab-node__title">ROCK ATLAS</text>
-          <text x="250" y="254" class="lab-node__meta">geology app</text>
-        </g>
-      </a>
-
-      <a href="/projects">
-        <g class="lab-node">
-          <rect x="380" y="300" width="184" height="84" />
-          <text x="402" y="336" class="lab-node__title">HOMELAB</text>
-          <text x="402" y="364" class="lab-node__meta">infrastructure</text>
-        </g>
-      </a>
-
-      <g class="lab-map__lines">
-        <path d="M244 113 H328 V190" />
-        <path d="M408 153 H328 V190" />
-        <path d="M328 274 V342 H380" />
-        <path d="M228 232 H188 V286" />
-      </g>
-
-      <g class="lab-map__ports" aria-hidden="true">
-        <circle cx="244" cy="113" r="5" />
-        <circle cx="408" cy="153" r="5" />
-        <circle cx="328" cy="190" r="5" />
-        <circle cx="328" cy="274" r="5" />
-        <circle cx="380" cy="342" r="5" />
-        <circle cx="188" cy="286" r="5" />
-        <circle cx="228" cy="232" r="5" />
-      </g>
-    </svg>
-  </section>
-
-  <section class="mt-20 border-t border-[#2b2f2b] pt-10">
-    <div class="grid gap-8 md:grid-cols-[0.4fr_1fr]">
-      <p class="eyebrow">Currently</p>
-      <div class="divide-y divide-[#2b2f2b]">
-        <a href="https://github.com/gjpalasak42/projectKepler" target="_blank" rel="noopener noreferrer" class="home-row group">
-          <span>projectKepler</span>
-          <em>Burp Suite tooling for collaborative penetration testing.</em>
-        </a>
-        <a href="https://github.com/gjpalasak42/dockerLab" target="_blank" rel="noopener noreferrer" class="home-row group">
-          <span>dockerLab</span>
-          <em>The homelab stack that hosts this site.</em>
-        </a>
-        <a href="https://intel.palasak.com" target="_blank" rel="noopener noreferrer" class="home-row group">
-          <span>threat-tracker</span>
-          <em>A threat intelligence UI experiment.</em>
-        </a>
-        <a href="https://rocks.palasak.com" target="_blank" rel="noopener noreferrer" class="home-row group">
-          <span>Rock Atlas</span>
-          <em>An interactive geology explorer with searchable specimen data and field notes.</em>
-        </a>
-        <a href="/about" class="home-row group">
-          <span>CPTS / PNPT</span>
-          <em>Certifications and practical training in progress.</em>
-        </a>
-      </div>
+      <aside class="hero-console__state reveal reveal-delay" aria-label="Current work">
+        <div class="hero-console__state-head">
+          <span>Now building</span>
+          <span>03 active</span>
+        </div>
+        <ol>
+          <li><b>01</b><a href="https://github.com/gjpalasak42/projectKepler" target="_blank" rel="noopener noreferrer">projectKepler</a><span>collaborative testing tooling</span></li>
+          <li><b>02</b><a href="https://github.com/gjpalasak42/dockerLab" target="_blank" rel="noopener noreferrer">dockerLab</a><span>secure home infrastructure</span></li>
+          <li><b>03</b><a href="https://intel.palasak.com" target="_blank" rel="noopener noreferrer">threat-tracker</a><span>intelligence interface research</span></li>
+        </ol>
+      </aside>
     </div>
   </section>
 
-  <section class="mt-20 grid gap-8 border-t border-[#2b2f2b] pt-10 md:grid-cols-[0.4fr_1fr]">
-    <p class="eyebrow">Note</p>
-    <p class="max-w-3xl text-2xl leading-snug text-[#f0e6d4] md:text-4xl">
-      This site collects the public parts of my work: security tools, homelab infrastructure, frontend experiments, and contact links.
-    </p>
-  </section>
+  <div class="console-page">
+    <section class="reveal reveal-delay">
+      <div class="mb-8 flex flex-wrap items-end justify-between gap-4">
+        <div>
+          <p class="console-kicker mb-3">Selected work</p>
+          <h2 class="text-3xl font-semibold tracking-[-0.03em] text-[#f4eddf] md:text-4xl">Current projects and experiments.</h2>
+        </div>
+        <a href="/projects" class="console-link">All projects</a>
+      </div>
+      <div class="console-list">
+        <a href="https://github.com/gjpalasak42/projectKepler" target="_blank" rel="noopener noreferrer" class="console-row"><span class="console-row__index">01</span><span class="console-row__title">projectKepler</span><span class="console-row__description">Burp Suite tooling for collaborative penetration testing.</span><span class="console-status">Active tooling</span></a>
+        <a href="https://github.com/gjpalasak42/dockerLab" target="_blank" rel="noopener noreferrer" class="console-row"><span class="console-row__index">02</span><span class="console-row__title">dockerLab</span><span class="console-row__description">The homelab stack that hosts this site.</span><span class="console-status">Live infrastructure</span></a>
+        <a href="https://rocks.palasak.com" target="_blank" rel="noopener noreferrer" class="console-row"><span class="console-row__index">03</span><span class="console-row__title">Rock Atlas</span><span class="console-row__description">An interactive geology explorer with searchable specimen data and field notes.</span><span class="console-status">Live project</span></a>
+      </div>
+    </section>
+
+    <section class="mt-24 grid gap-8 border-t console-rule pt-10 md:grid-cols-[0.35fr_1fr]">
+      <p class="console-kicker">Working notes</p>
+      <p class="max-w-3xl text-2xl leading-snug text-[#f0e6d4] md:text-4xl">This site collects the public parts of my work: security tools, homelab infrastructure, frontend experiments, and ways to connect.</p>
+    </section>
+  </div>
 </BaseLayout>
 
 <style>
-  .lab-map {
-    display: block;
+  .hero-console {
     width: 100%;
-    aspect-ratio: 640 / 440;
-    background: rgba(13, 15, 14, 0.64);
+    min-height: calc(100svh - 7rem);
+    display: grid;
+    align-items: center;
+    border-bottom: 1px solid #2b2f2b;
+    background: linear-gradient(90deg, rgba(201, 166, 107, 0.07), transparent 38%), rgba(15, 17, 16, 0.64);
   }
 
-  .lab-map__frame {
-    fill: transparent;
-    stroke: #2b2f2b;
-    stroke-width: 1;
+  .hero-console__inner {
+    width: min(72rem, 100%);
+    margin: 0 auto;
+    display: grid;
+    gap: 3rem;
+    padding: 3rem 1.25rem;
   }
 
-  .lab-map__lines path {
-    fill: none;
-    stroke: #62675d;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-    stroke-width: 1.7;
+  .hero-console h1 {
+    margin: 0;
+    color: #f4eddf;
+    font-size: clamp(4.5rem, 13vw, 10rem);
+    font-weight: 600;
+    letter-spacing: -0.075em;
+    line-height: 0.78;
   }
 
-  .lab-map__ports circle {
-    fill: #d7b46f;
-    stroke: #111411;
-    stroke-width: 1.5;
+  .hero-console__summary {
+    max-width: 42rem;
+    margin: 2.5rem 0 0;
+    color: #d8d2c4;
+    font-size: clamp(1.55rem, 3vw, 2.7rem);
+    line-height: 1.15;
   }
 
-  .lab-map a {
-    text-decoration: none;
+  .hero-console__detail {
+    max-width: 37rem;
+    margin: 1.25rem 0 0;
+    color: #989d91;
+    font-size: 1.05rem;
+    line-height: 1.75;
   }
 
-  .lab-node {
-    transition: transform 180ms ease;
-    transform-box: fill-box;
-    transform-origin: center;
+  .hero-console__state {
+    border-left: 1px solid #3b403a;
+    padding-left: 1.5rem;
   }
 
-  .lab-node rect {
-    fill: #111411;
-    stroke: #3b403a;
-    stroke-width: 1.5;
-    transition: fill 180ms ease, stroke 180ms ease;
+  .hero-console__state-head,
+  .hero-console__state li {
+    display: grid;
+    gap: 0.5rem;
   }
 
-  .lab-node__title {
-    fill: #f4eddf;
+  .hero-console__state-head {
+    grid-template-columns: 1fr auto;
+    padding-bottom: 0.9rem;
+    color: #a8a395;
     font-family: "Fira Code", monospace;
-    font-size: 18px;
-    letter-spacing: 0.22em;
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
     text-transform: uppercase;
   }
 
-  .lab-node__meta {
-    fill: #8f948b;
-    font-size: 18px;
+  .hero-console__state ol {
+    margin: 0;
+    padding: 0;
+    list-style: none;
   }
 
-  .lab-node:hover {
-    transform: translateY(-3px);
+  .hero-console__state li {
+    grid-template-columns: 2.5rem minmax(0, 1fr);
+    padding: 1rem 0;
+    border-top: 1px solid #2b2f2b;
   }
 
-  .lab-node:hover rect {
-    fill: #171914;
-    stroke: #c9a66b;
+  .hero-console__state b,
+  .hero-console__state span {
+    color: #8f948b;
+    font-family: "Fira Code", monospace;
+    font-size: 0.72rem;
+    font-weight: 400;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
   }
 
-  .home-row {
-    display: grid;
-    gap: 0.75rem;
-    padding: 1.1rem 0;
+  .hero-console__state a {
+    color: #f4eddf;
+    font-family: "Fira Code", monospace;
     text-decoration: none;
   }
 
-  .home-row span {
-    color: #f4eddf;
-    font-family: "Fira Code", monospace;
-    font-size: 0.92rem;
+  .hero-console__state a:hover {
+    color: #c9a66b;
   }
 
-  .home-row em {
-    color: #8f948b;
-    font-style: normal;
-    line-height: 1.7;
-    transition: color 180ms ease;
+  .hero-console__state span {
+    grid-column: 2;
+    letter-spacing: 0;
+    text-transform: none;
   }
 
-  .home-row:hover em {
-    color: #cfc7b8;
-  }
-
-  @media (min-width: 768px) {
-    .home-row {
-      grid-template-columns: 12rem 1fr;
-    }
-  }
-
-  @media (max-width: 640px) {
-    .lab-node__title,
-    .lab-node__meta {
-      font-size: 17px;
+  @media (min-width: 900px) {
+    .hero-console__inner {
+      grid-template-columns: minmax(0, 1.2fr) minmax(18rem, 0.55fr);
+      align-items: end;
+      gap: 5rem;
+      padding: 5rem 2rem;
     }
   }
 </style>
