@@ -34,6 +34,24 @@ test('projects page marks only Rock Atlas as new', async () => {
   assert.ok(rockAtlasBadge < nextSection);
 });
 
+test('projects page presents PNPT as passed with the Accredible badge', async () => {
+  const projects = await source('projects.astro');
+
+  assert.match(projects, /TCM Security PNPT/);
+  assert.match(projects, /datetime="2026-07-28">Passed July 28, 2026/);
+  assert.match(projects, /https:\/\/certified\.tcm-sec\.com\/embed\/f0d3b6a4-ea35-4166-9df4-3892a5a5ed22/);
+  assert.match(projects, /https:\/\/api\.accredible\.com\/v1\/frontend\/credential_website_embed_image\/badge\/189943032/);
+  assert.doesNotMatch(projects, /Report submitted/);
+});
+
+test('projects page identifies CWES as certification preparation', async () => {
+  const projects = await source('projects.astro');
+
+  assert.match(projects, /Hack The Box CWES/);
+  assert.match(projects, /Preparing for the Certified Web Exploitation Specialist certification/);
+  assert.doesNotMatch(projects, /Hack The Box CPTS/);
+});
+
 test('contact page links to the canonical Hack The Box profile', async () => {
   const contact = await source('contact.astro');
 
