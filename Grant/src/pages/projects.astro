@@ -67,8 +67,19 @@ const projects = [
       <div>
         <h2 class="text-3xl font-semibold tracking-[-0.03em] text-[#f4eddf]">Practical security training.</h2>
         <div class="console-list mt-8">
-          <div class="console-row"><span class="console-row__index">01</span><span class="console-row__title">Hack The Box CPTS</span><span class="console-row__description">Certified Penetration Testing Specialist.</span><span class="console-status">In progress</span></div>
-          <div class="console-row"><span class="console-row__index">02</span><span class="console-row__title">TCM Security PNPT</span><span class="console-row__description">Practical Network Penetration Tester.</span><span class="console-status">Report submitted</span></div>
+          <div class="console-row"><span class="console-row__index">01</span><span class="console-row__title">Hack The Box CWES</span><span class="console-row__description">Preparing for the Certified Web Exploitation Specialist certification.</span><span class="console-status">In progress</span></div>
+          <a href="https://certified.tcm-sec.com/embed/f0d3b6a4-ea35-4166-9df4-3892a5a5ed22" target="_blank" rel="noopener noreferrer" class="console-row certification-row" aria-label="View Grant Palasak's verified PNPT credential">
+            <span class="console-row__index">02</span>
+            <span class="console-row__title">TCM Security PNPT</span>
+            <span class="console-row__description">Practical Network Penetration Tester.</span>
+            <span class="certification-proof">
+              <img src="https://api.accredible.com/v1/frontend/credential_website_embed_image/badge/189943032" alt="TCM Security Practical Network Penetration Tester badge" width="96" height="96" loading="lazy" decoding="async" />
+              <span class="credential-status">
+                <time class="console-status" datetime="2026-07-28">Passed July 28, 2026</time>
+                <span class="credential-link-hint">View credential ↗</span>
+              </span>
+            </span>
+          </a>
           <div class="console-row"><span class="console-row__index">03</span><span class="console-row__title">CPTC</span><span class="console-row__description">Former Team Captain for Tennessee Tech's CyberEagles. 1st Place Central Region (2024); 3rd Place Central Region (2025).</span><span class="console-status">Competition</span></div>
         </div>
       </div>
@@ -93,5 +104,41 @@ const projects = [
 
   .new-badge {
     color: #f4eddf;
+  }
+
+  .certification-proof {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .certification-proof img {
+    flex: 0 0 auto;
+    width: 4.5rem;
+    height: 4.5rem;
+    object-fit: contain;
+  }
+
+  .credential-status {
+    display: grid;
+    gap: 0.35rem;
+  }
+
+  .credential-link-hint {
+    color: #74796f;
+    font-family: "Fira Code", monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  @media (min-width: 768px) {
+    .certification-row {
+      align-items: center;
+    }
+
+    .certification-proof {
+      justify-content: flex-end;
+    }
   }
 </style>
