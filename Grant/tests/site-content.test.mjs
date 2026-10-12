@@ -44,11 +44,14 @@ test('projects page presents PNPT as passed with the Accredible badge', async ()
   assert.doesNotMatch(projects, /Report submitted/);
 });
 
-test('projects page identifies CWES as certification preparation', async () => {
+test('projects page presents CWES as passed with the verified credential', async () => {
   const projects = await source('projects.astro');
 
   assert.match(projects, /Hack The Box CWES/);
-  assert.match(projects, /Preparing for the Certified Web Exploitation Specialist certification/);
+  assert.match(projects, /Certified Web Exploitation Specialist\./);
+  assert.match(projects, /datetime="2026-10-12">Passed October 12, 2026/);
+  assert.match(projects, /https:\/\/profile\.hackthebox\.com\/profile\/019c85b4-4c92-7102-af1c-63530ed5c8c0\/certificate\/HTBCERT-1903DD9790/);
+  assert.doesNotMatch(projects, /Preparing for the Certified Web Exploitation Specialist certification/);
   assert.doesNotMatch(projects, /Hack The Box CPTS/);
 });
 

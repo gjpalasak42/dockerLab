@@ -67,7 +67,18 @@ const projects = [
       <div>
         <h2 class="text-3xl font-semibold tracking-[-0.03em] text-[#f4eddf]">Practical security training.</h2>
         <div class="console-list mt-8">
-          <div class="console-row"><span class="console-row__index">01</span><span class="console-row__title">Hack The Box CWES</span><span class="console-row__description">Preparing for the Certified Web Exploitation Specialist certification.</span><span class="console-status">In progress</span></div>
+          <a href="https://profile.hackthebox.com/profile/019c85b4-4c92-7102-af1c-63530ed5c8c0/certificate/HTBCERT-1903DD9790" target="_blank" rel="noopener noreferrer" class="console-row certification-row" aria-label="View Grant Palasak's verified CWES credential">
+            <span class="console-row__index">01</span>
+            <span class="console-row__title">Hack The Box CWES</span>
+            <span class="console-row__description">Certified Web Exploitation Specialist.</span>
+            <span class="certification-proof">
+              <img class="cwes-badge" src="/cwes-badge.png" alt="Hack The Box Certified Web Exploitation Specialist badge" width="96" height="96" loading="lazy" decoding="async" />
+              <span class="credential-status">
+                <time class="console-status" datetime="2026-10-12">Passed October 12, 2026</time>
+                <span class="credential-link-hint">View credential ↗</span>
+              </span>
+            </span>
+          </a>
           <a href="https://certified.tcm-sec.com/embed/f0d3b6a4-ea35-4166-9df4-3892a5a5ed22" target="_blank" rel="noopener noreferrer" class="console-row certification-row" aria-label="View Grant Palasak's verified PNPT credential">
             <span class="console-row__index">02</span>
             <span class="console-row__title">TCM Security PNPT</span>
@@ -107,7 +118,10 @@ const projects = [
   }
 
   .certification-proof {
-    display: flex;
+    display: grid;
+    grid-template-columns: 4.5rem minmax(0, 1fr);
+    width: 17rem;
+    max-width: 100%;
     align-items: center;
     gap: 1rem;
   }
@@ -124,6 +138,12 @@ const projects = [
     gap: 0.35rem;
   }
 
+  .cwes-badge {
+    background: #fff;
+    border-radius: 50%;
+    padding: 0.2rem;
+  }
+
   .credential-link-hint {
     color: #74796f;
     font-family: "Fira Code", monospace;
@@ -137,8 +157,23 @@ const projects = [
       align-items: center;
     }
 
-    .certification-proof {
-      justify-content: flex-end;
+    .certification-row:hover {
+      padding-left: 0;
+      padding-right: 0;
+    }
+  }
+
+  @media (min-width: 768px) and (max-width: 1023px) {
+    .certification-row {
+      grid-template-columns: 2rem minmax(0, 1fr);
+    }
+
+    .certification-row .console-row__index {
+      grid-row: 1 / 4;
+    }
+
+    .certification-row > :not(.console-row__index) {
+      grid-column: 2;
     }
   }
 </style>
