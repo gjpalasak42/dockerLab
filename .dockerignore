@@ -18,6 +18,7 @@ dist
 build
 
 # Runtime data and logs
+.maintenance-backups
 n8n_data
 uptime_kuma_data
 portainer_data

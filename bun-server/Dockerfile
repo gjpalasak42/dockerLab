@@ -1,4 +1,4 @@
-FROM oven/bun:1.1.18-alpine
+FROM oven/bun:1.4.4-alpine AS site-build
 
 WORKDIR /usr/app
 
@@ -9,21 +9,28 @@ COPY Grant ./website
 WORKDIR /usr/app/website
 
 # Install dependencies and build static site
-RUN bun install
+RUN bun install --frozen-lockfile
 RUN bun run build
 
 # --- Stage 2: Setup the static server ---
+FROM oven/bun:1.4.4-alpine AS server-deps
 WORKDIR /usr/app
 
 # Copy server package files
-COPY bun-server/package.json ./
-RUN bun install --production
+COPY bun-server/package.json bun-server/bun.lock ./
+RUN bun install --frozen-lockfile --production
+
+# Keep site build tools and package-manager caches out of production.
+FROM oven/bun:1.4.4-alpine AS runtime
+WORKDIR /usr/app
+COPY --from=server-deps /usr/app/package.json ./
+COPY --from=server-deps /usr/app/node_modules ./node_modules
 
 # Copy server code
 COPY bun-server/index.ts ./
 
 # Copy built static files from Astro dist to public
-RUN mkdir -p ./public && cp -r website/dist/* ./public/
+COPY --from=site-build /usr/app/website/dist ./public
 
 # Create a non-root user and group to run the application
 RUN addgroup -g 1001 -S bunuser && \

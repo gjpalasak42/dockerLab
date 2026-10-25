@@ -6,6 +6,7 @@ n8n_data/
 uptime_kuma_data/
 portainer_data/
 postgred_data/
+.maintenance-backups/
 
 # OS / editor cruft
 .DS_Store
